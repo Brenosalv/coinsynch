@@ -1,34 +1,82 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# CoinSynch
 
-## Getting Started
+## Table of Contents
+- [Introduction](#introduction)
+- [Techs](#techs)
+- [Features](#features)
+- [Layout](#layout)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Usage](#usage)
 
-First, run the development server:
+## Introduction
+
+Welcome to CoinSynch! This project encompasses the development of an engaging landing page and a dynamic dashboard interface, seamlessly integrated with an authentication mechanism.
+
+## Techs
+
+For the front-end side, I used React.js with Next.js 13.4, Tailwind CSS, Shadcn-ui, Jest and Typescript. For the back-end side, I used json-server as a fake API and fetched data from coinapi.io.
+
+## Features
+
+- Real-time cryptocurrency data sourced from [coinapi.io](https://www.coinapi.io/)
+- Carousel-based top banner for enhanced visual appeal
+- Dynamic display of "Top Cryptos" from the REST API
+- Intuitive "View more +" functionality for streamlined content browsing
+- Newsletter form with interactive API interactions and loading states
+- User-friendly "Sign in" dialog with email validation and password toggling
+- Comprehensive "Sign Up" process with mandatory fields and acceptance checkboxes
+- Smooth transition between "Sign Up" and "Sign in" dialogs based on user interaction
+
+## Dashboard
+
+- Personalized user information display sourced from REST API
+- Convenient "Logout" option within the top section
+- Interactive sidebar menu with expand and minimize capabilities
+- Dynamic content rendering driven by API data
+- Aesthetically formatted "Balance in US$" representation
+- Data-driven "Daily Variation" graph based on API data
+- Detailed "My Wallet" section displaying API-fetched information
+- Effortless interaction with the "Add Crypto" dialog, dynamically populated
+- Immediate updates to "My Wallet" upon cryptocurrency addition
+- Seamless interaction with the "Transfer Crypto" dialog
+- Intuitive handling of coin removal from the wallet
+
+For a comprehensive visual representation, please consult the detailed Figma layouts. CoinSynch embodies the convergence of sophisticated design and robust functionality.
+
+## Layout
+
+You can view the project layout in Figma through this [link](https://www.figma.com/file/B8scopEM014WR4Oh58UaDb/%5BEduSynch%5D--Front-End-Test).
+
+## Prerequisites
+
+Before you begin, ensure you have the following installed:
+
+- Node.js (v12 or higher)
+- npm (v6 or higher)
+
+## Installation
+
+Clone this repository to your local machine:
+
+```bash
+git clone https://github.com/your-username/coinsynch.git
+```
+
+Navigate to the project directory:
+
+```bash
+cd coinsynch
+```
+
+## Usage
+
+To start the project, run:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Access the CoinSynch application by opening your web browser and navigating to http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Happy syncing!
