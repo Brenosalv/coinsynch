@@ -1,31 +1,21 @@
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import Image from 'next/image'
-import Link from 'next/link'
 import LogoImg from '../assets/logo.svg'
 import MenuIcon from '../assets/menu.svg'
 import { Button } from './ui/button'
+import { Link } from './ui/link'
 
 export function NavBar() {
   return (
     <nav className="flex-col">
-      <div className="mx-[112px] max-sm:mx-[16px] max-md:mx-[48px] py-[22px] flex items-center justify-between">
+      <div className="mx-[112px] max-sm:mx-[16px] max-md:mx-[48px] py-[11px] flex items-center justify-between">
         <Link href="#">
           <Image src={LogoImg} alt="Logo" height={21} />
         </Link>
 
         <div className="flex gap-[24px] ml-[40px] mr-auto max-sm:hidden">
-          <Link
-            href="#"
-            className="text-sm leading-4 text-foreground underline-offset-4 hover:underline"
-          >
-            About us
-          </Link>
-          <Link
-            href="#"
-            className="text-sm leading-4 text-foreground underline-offset-4 hover:underline"
-          >
-            Top Cryptos
-          </Link>
+          <Link href="#">About us</Link>
+          <Link href="#">Top Cryptos</Link>
         </div>
 
         <div className="flex items-center gap-[80px]">
@@ -36,8 +26,12 @@ export function NavBar() {
           </div>
 
           <div className="flex gap-[24px] max-sm:hidden">
-            <Button variant="link">Sign in</Button>
-            <Button className="w-[100px]">Sign up</Button>
+            <Button variant="link" className="p-0">
+              Sign in
+            </Button>
+            <Button className="py-[8px] px-[16px]">
+              <span className="mx-[17px]">Sign up</span>
+            </Button>
           </div>
 
           <Sheet>
@@ -46,30 +40,10 @@ export function NavBar() {
             </SheetTrigger>
             <SheetContent>
               <div className="flex flex-col gap-8 items-end pt-8">
-                <Link
-                  href="#"
-                  className="text-lg leading-4 text-foreground underline-offset-4 hover:underline"
-                >
-                  About us
-                </Link>
-                <Link
-                  href="#"
-                  className="text-lg leading-4 text-foreground underline-offset-4 hover:underline"
-                >
-                  Top Cryptos
-                </Link>
-                <Link
-                  href="#"
-                  className="text-lg leading-4 text-foreground underline-offset-4 hover:underline"
-                >
-                  Sign in
-                </Link>
-                <Link
-                  href="#"
-                  className="text-lg leading-4 text-foreground underline-offset-4 hover:underline"
-                >
-                  Sign up
-                </Link>
+                <Link href="#">About us</Link>
+                <Link href="#">Top Cryptos</Link>
+                <Link href="#">Sign in</Link>
+                <Link href="#">Sign up</Link>
               </div>
             </SheetContent>
           </Sheet>

@@ -1,7 +1,7 @@
 import { NavBar } from './NavBar'
 
 interface HeaderProps {
-  className: string | undefined
+  className?: string
 }
 
 export function Header({ className }: HeaderProps) {
