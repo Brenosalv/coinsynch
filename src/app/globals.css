@@ -15,10 +15,13 @@
 
     --primary: 36, 96%, 59%, 1;
     --primary-foreground: 210 40% 98%;
+    --primary-500: 36, 96%, 59%, 1;
 
     --secondary: 253, 8%, 32%, 1;
     --secondary-foreground: 222.2 47.4% 11.2%;
     --secondary-200: 252, 26%, 96%, 1;
+    --secondary-300: 250, 22%, 89%, 1;
+    --secondary-500: 252, 6%, 57%, 1;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;

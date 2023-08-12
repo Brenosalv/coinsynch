@@ -26,12 +26,15 @@ module.exports = {
           // Orange
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
+          500: 'hsl(var(--primary-500))',
         },
         secondary: {
           // Grey
           DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))',
           200: 'hsl(var(--secondary-200))',
+          300: 'hsl(var(--secondary-300))',
+          500: 'hsl(var(--secondary-500))',
         },
         destructive: {
           DEFAULT: 'hsl(var(--destructive))',

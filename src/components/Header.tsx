@@ -1,5 +1,4 @@
 import { NavBar } from './NavBar'
-
 interface HeaderProps {
   className?: string
 }

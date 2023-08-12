@@ -2,7 +2,16 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import Image from 'next/image'
 import LogoImg from '../assets/logo.svg'
 import MenuIcon from '../assets/menu.svg'
+import { SignInForm } from './SignInForm'
 import { Button } from './ui/button'
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from './ui/dialog'
 import { Link } from './ui/link'
 
 export function NavBar() {
@@ -26,9 +35,38 @@ export function NavBar() {
           </div>
 
           <div className="flex gap-[24px] max-sm:hidden">
-            <Button variant="link" className="p-0">
-              Sign in
-            </Button>
+            <Dialog>
+              <DialogTrigger>
+                <Button variant="link" className="p-0">
+                  Sign in
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="flex flex-col gap-[24px] p-[32px]">
+                <DialogHeader>
+                  <DialogTitle className="text-foreground text-2xl font-normal mx-auto">
+                    Sign in to{' '}
+                    <span className="text-primary text-2xl font-bold">
+                      Coin
+                    </span>{' '}
+                    <span className="text-secondary-500 text-2xl font-bold">
+                      Synch
+                    </span>
+                  </DialogTitle>
+                </DialogHeader>
+                <SignInForm />
+                <DialogFooter className="mx-auto">
+                  <p className="text-foreground text-sm font-normal">
+                    Don&apos;t have an account?{' '}
+                    <Link href="#" isFontBold>
+                      Sign up to
+                    </Link>{' '}
+                    <span className="text-primary-500 font-bold">Coin</span>
+                    <span className="text-secondary-500 font-bold">Synch</span>
+                  </p>
+                </DialogFooter>
+              </DialogContent>
+            </Dialog>
+
             <Button className="py-[8px] px-[16px]">
               <span className="mx-[17px]">Sign up</span>
             </Button>
