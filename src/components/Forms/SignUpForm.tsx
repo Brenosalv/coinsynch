@@ -58,7 +58,7 @@ export function SignUpForm() {
           <Checkbox id="terms" name="terms" />
           <label
             htmlFor="terms"
-            className="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 mt-3"
+            className="text-sm max-sm:text-xs max-sm:leading-[0.75rem] leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 mt-3 max-sm:mt-2"
           >
             I have read and accept the{' '}
             <span className="font-bold">Privacy Policy</span> and{' '}

@@ -22,13 +22,21 @@ export function NavBar() {
   const signInButtonRef = useRef<HTMLButtonElement>(null)
   const signUpButtonRef = useRef<HTMLButtonElement>(null)
 
-  function handleAlternateAuthModals() {
+  function handleSignInButtonClick() {
     if (signInButtonRef.current) {
       signInButtonRef.current.click()
     }
+  }
+
+  function handleSignUpButtonClick() {
     if (signUpButtonRef.current) {
       signUpButtonRef.current.click()
     }
+  }
+
+  function handleAlternateAuthModals() {
+    handleSignInButtonClick()
+    handleSignUpButtonClick()
   }
 
   return (
@@ -59,12 +67,12 @@ export function NavBar() {
               </DialogTrigger>
               <DialogContent className="flex flex-col gap-[24px] p-[32px]">
                 <DialogHeader>
-                  <DialogTitle className="text-foreground text-2xl font-normal mx-auto">
+                  <DialogTitle className="text-foreground text-2xl font-normal mx-auto max-md:text-xl max-sm:text-base">
                     Sign in to{' '}
-                    <span className="text-primary text-2xl font-bold">
+                    <span className="text-primary text-2xl font-bold max-md:text-xl max-sm:text-base">
                       Coin
                     </span>{' '}
-                    <span className="text-secondary-500 text-2xl font-bold">
+                    <span className="text-secondary-500 text-2xl font-bold max-md:text-xl max-sm:text-base">
                       Synch
                     </span>
                   </DialogTitle>
@@ -74,7 +82,9 @@ export function NavBar() {
 
                 <DialogFooter className="mx-auto">
                   <p className="text-foreground text-sm font-normal">
-                    Don&apos;t have an account?{' '}
+                    <span className="max-sm:hidden">
+                      Don&apos;t have an account?{' '}
+                    </span>
                     <Link
                       href="#"
                       isFontBold
@@ -82,8 +92,12 @@ export function NavBar() {
                     >
                       Sign up to
                     </Link>{' '}
-                    <span className="text-primary-500 font-bold">Coin</span>
-                    <span className="text-secondary-500 font-bold">Synch</span>
+                    <span className="text-primary-500 font-bold max-sm:text-xs text-sm max-sm:leading-[0.75rem]">
+                      Coin
+                    </span>
+                    <span className="text-secondary-500 font-bold max-sm:text-xs text-sm max-sm:leading-[0.75rem]">
+                      Synch
+                    </span>
                   </p>
                 </DialogFooter>
               </DialogContent>
@@ -97,12 +111,12 @@ export function NavBar() {
               </DialogTrigger>
               <DialogContent className="flex flex-col gap-[24px] p-[32px]">
                 <DialogHeader>
-                  <DialogTitle className="text-foreground text-2xl font-normal mx-auto">
+                  <DialogTitle className="text-foreground text-2xl font-normal mx-auto max-md:text-xl max-sm:text-base">
                     Sign up to{' '}
-                    <span className="text-primary text-2xl font-bold">
+                    <span className="text-primary text-2xl font-bold max-md:text-xl max-sm:text-base">
                       Coin
                     </span>{' '}
-                    <span className="text-secondary-500 text-2xl font-bold">
+                    <span className="text-secondary-500 text-2xl font-bold max-md:text-xl max-sm:text-base">
                       Synch
                     </span>
                   </DialogTitle>
@@ -112,7 +126,9 @@ export function NavBar() {
 
                 <DialogFooter className="mx-auto">
                   <p className="text-foreground text-sm font-normal">
-                    Already have an account?{' '}
+                    <span className="max-sm:hidden">
+                      Already have an account?{' '}
+                    </span>
                     <Link
                       href="#"
                       isFontBold
@@ -120,8 +136,12 @@ export function NavBar() {
                     >
                       Sign in to
                     </Link>{' '}
-                    <span className="text-primary-500 font-bold">Coin</span>
-                    <span className="text-secondary-500 font-bold">Synch</span>
+                    <span className="text-primary-500 font-bold max-sm:text-xs text-sm max-sm:leading-[0.75rem]">
+                      Coin
+                    </span>
+                    <span className="text-secondary-500 font-bold max-sm:text-xs text-sm max-sm:leading-[0.75rem]">
+                      Synch
+                    </span>
                   </p>
                 </DialogFooter>
               </DialogContent>
@@ -136,8 +156,12 @@ export function NavBar() {
               <div className="flex flex-col gap-8 items-end pt-8">
                 <Link href="#">About us</Link>
                 <Link href="#">Top Cryptos</Link>
-                <Link href="#">Sign in</Link>
-                <Link href="#">Sign up</Link>
+                <Link href="#" onClick={handleSignInButtonClick}>
+                  Sign in
+                </Link>
+                <Link href="#" onClick={handleSignUpButtonClick}>
+                  Sign up
+                </Link>
               </div>
             </SheetContent>
           </Sheet>

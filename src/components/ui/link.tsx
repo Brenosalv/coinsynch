@@ -12,7 +12,7 @@ function LinkFromNext({ children, isFontBold, onClick }: LinkProps) {
     <Link
       href="#"
       className={cn(
-        'max-sm:text-lg text-sm leading-4 text-foreground underline-offset-4 hover:underline',
+        'max-sm:text-xs text-sm max-sm:leading-[0.75rem] leading-4 text-foreground underline-offset-4 hover:underline',
         isFontBold && 'font-bold',
       )}
       onClick={onClick}
