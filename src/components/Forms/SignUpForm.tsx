@@ -1,0 +1,62 @@
+'use client'
+
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+import * as z from 'zod'
+
+import { Button } from '@/components/ui/button'
+import { Form } from '@/components/ui/form'
+import { toast } from '@/components/ui/use-toast'
+import { SignUpFormSchema } from '@/schemas/SignUpFormSchema'
+import Image from 'next/image'
+import LockIcon from '../../assets/lock.svg'
+import MailIcon from '../../assets/mail.svg'
+import UserIcon from '../../assets/user.svg'
+import { Input } from '../ui/input'
+
+export function SignUpForm() {
+  const form = useForm<z.infer<typeof SignUpFormSchema>>({
+    resolver: zodResolver(SignUpFormSchema),
+  })
+
+  function onSubmit(data: z.infer<typeof SignUpFormSchema>) {
+    toast({
+      description: `${data.name}, you successfully signed up with ${data.email}.`,
+    })
+
+    // Here the data was not submitted for sign un as it was not required in the challenge, so I added a toast to represent that the user successfully signed up.
+  }
+
+  return (
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-6">
+        <Input
+          name="name"
+          placeholder="Name"
+          iconLeft={<Image src={UserIcon} alt="" />}
+        />
+        <Input
+          name="email"
+          type="email"
+          placeholder="Email"
+          iconLeft={<Image src={MailIcon} alt="" />}
+        />
+        <Input
+          name="password"
+          type="password"
+          placeholder="Password"
+          iconLeft={<Image src={LockIcon} alt="" />}
+        />
+        <Input
+          name="confirmPassword"
+          type="password"
+          placeholder="Confirm password"
+          iconLeft={<Image src={LockIcon} alt="" />}
+        />
+        <Button type="submit" className="w-full py-[0.875rem] px-[1.5rem]">
+          Sign up
+        </Button>
+      </form>
+    </Form>
+  )
+}

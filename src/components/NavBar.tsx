@@ -1,8 +1,12 @@
+'use client'
+
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import Image from 'next/image'
+import { useRef } from 'react'
 import LogoImg from '../assets/logo.svg'
 import MenuIcon from '../assets/menu.svg'
-import { SignInForm } from './SignInForm'
+import { SignInForm } from './Forms/SignInForm'
+import { SignUpForm } from './Forms/SignUpForm'
 import { Button } from './ui/button'
 import {
   Dialog,
@@ -15,6 +19,18 @@ import {
 import { Link } from './ui/link'
 
 export function NavBar() {
+  const signInButtonRef = useRef<HTMLButtonElement>(null)
+  const signUpButtonRef = useRef<HTMLButtonElement>(null)
+
+  function handleAlternateAuthModals() {
+    if (signInButtonRef.current) {
+      signInButtonRef.current.click()
+    }
+    if (signUpButtonRef.current) {
+      signUpButtonRef.current.click()
+    }
+  }
+
   return (
     <nav className="flex-col">
       <div className="mx-[112px] max-sm:mx-[16px] max-md:mx-[48px] py-[11px] flex items-center justify-between">
@@ -37,7 +53,7 @@ export function NavBar() {
           <div className="flex gap-[24px] max-sm:hidden">
             <Dialog>
               <DialogTrigger>
-                <Button variant="link" className="p-0">
+                <Button variant="link" className="p-0" ref={signInButtonRef}>
                   Sign in
                 </Button>
               </DialogTrigger>
@@ -53,11 +69,17 @@ export function NavBar() {
                     </span>
                   </DialogTitle>
                 </DialogHeader>
+
                 <SignInForm />
+
                 <DialogFooter className="mx-auto">
                   <p className="text-foreground text-sm font-normal">
                     Don&apos;t have an account?{' '}
-                    <Link href="#" isFontBold>
+                    <Link
+                      href="#"
+                      isFontBold
+                      onClick={handleAlternateAuthModals}
+                    >
                       Sign up to
                     </Link>{' '}
                     <span className="text-primary-500 font-bold">Coin</span>
@@ -67,9 +89,43 @@ export function NavBar() {
               </DialogContent>
             </Dialog>
 
-            <Button className="py-[8px] px-[16px]">
-              <span className="mx-[17px]">Sign up</span>
-            </Button>
+            <Dialog>
+              <DialogTrigger>
+                <Button className="py-[8px] px-[16px]" ref={signUpButtonRef}>
+                  <span className="mx-[17px]">Sign up</span>
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="flex flex-col gap-[24px] p-[32px]">
+                <DialogHeader>
+                  <DialogTitle className="text-foreground text-2xl font-normal mx-auto">
+                    Sign up to{' '}
+                    <span className="text-primary text-2xl font-bold">
+                      Coin
+                    </span>{' '}
+                    <span className="text-secondary-500 text-2xl font-bold">
+                      Synch
+                    </span>
+                  </DialogTitle>
+                </DialogHeader>
+
+                <SignUpForm />
+
+                <DialogFooter className="mx-auto">
+                  <p className="text-foreground text-sm font-normal">
+                    Already have an account?{' '}
+                    <Link
+                      href="#"
+                      isFontBold
+                      onClick={handleAlternateAuthModals}
+                    >
+                      Sign in to
+                    </Link>{' '}
+                    <span className="text-primary-500 font-bold">Coin</span>
+                    <span className="text-secondary-500 font-bold">Synch</span>
+                  </p>
+                </DialogFooter>
+              </DialogContent>
+            </Dialog>
           </div>
 
           <Sheet>
