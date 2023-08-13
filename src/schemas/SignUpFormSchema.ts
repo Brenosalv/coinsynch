@@ -1,12 +1,5 @@
 import { z } from 'zod'
 
-interface SignUpFormValues {
-  name: string
-  email: string
-  password: string
-  confirmPassword: string
-}
-
 let pw = ''
 
 export const SignUpFormSchema = z.object({
@@ -31,4 +24,7 @@ export const SignUpFormSchema = z.object({
     .refine((value) => pw === value, {
       message: 'Passwords must match.',
     }),
+  terms: z.boolean().refine((value) => value === true, {
+    message: 'You must check to proceed.',
+  }),
 })

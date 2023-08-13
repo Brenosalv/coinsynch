@@ -21,7 +21,7 @@ export function SignInForm() {
 
   function onSubmit(data: z.infer<typeof SignInFormSchema>) {
     toast({
-      description: `You successfully signed in with ${data.email}.`,
+      description: `You successfully signed in with email ${data.email}.`,
     })
 
     // Here the data was not submitted for sign in as it was not required in the challenge, so I added a toast to represent that the user successfully signed in.

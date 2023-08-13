@@ -12,6 +12,7 @@ import Image from 'next/image'
 import LockIcon from '../../assets/lock.svg'
 import MailIcon from '../../assets/mail.svg'
 import UserIcon from '../../assets/user.svg'
+import { Checkbox } from '../ui/checkbox'
 import { Input } from '../ui/input'
 
 export function SignUpForm() {
@@ -21,7 +22,7 @@ export function SignUpForm() {
 
   function onSubmit(data: z.infer<typeof SignUpFormSchema>) {
     toast({
-      description: `${data.name}, you successfully signed up with ${data.email}.`,
+      description: `${data.name}, you successfully signed up with email ${data.email}.`,
     })
 
     // Here the data was not submitted for sign un as it was not required in the challenge, so I added a toast to represent that the user successfully signed up.
@@ -53,6 +54,17 @@ export function SignUpForm() {
           placeholder="Confirm password"
           iconLeft={<Image src={LockIcon} alt="" />}
         />
+        <div className="flex items-center gap-4">
+          <Checkbox id="terms" name="terms" />
+          <label
+            htmlFor="terms"
+            className="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 mt-3"
+          >
+            I have read and accept the{' '}
+            <span className="font-bold">Privacy Policy</span> and{' '}
+            <span className="font-bold">Terms of User Sign up.</span>
+          </label>
+        </div>
         <Button type="submit" className="w-full py-[0.875rem] px-[1.5rem]">
           Sign up
         </Button>
