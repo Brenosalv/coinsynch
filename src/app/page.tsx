@@ -1,15 +1,21 @@
 'use client'
 
 import ArrowRightIcon2 from '@/assets/arrow-right-2.svg'
+import CryptoSolutions1Icon from '@/assets/crypto-solutions-1.svg'
+import CryptoSolutions2Icon from '@/assets/crypto-solutions-2.svg'
+import CryptoSolutions3Icon from '@/assets/crypto-solutions-3.svg'
+import CryptoSolutions4Icon from '@/assets/crypto-solutions-4.svg'
 import WavesIcon from '@/assets/waves.svg'
 import { Carousel } from '@/components/Carousel'
+import { SolutionsCard } from '@/components/SolutionsCard'
 import { Tag } from '@/components/Tag'
 import { Button } from '@/components/ui/button'
+import { openSignUpModal } from '@/utils/openSignUpModal'
 import Image from 'next/image'
 
 export default function Home() {
   return (
-    <main className="w-[100vw] overflow-x-hidden flex flex-col items-center">
+    <main className="overflow-x-hidden overflow-y-hidden flex flex-col items-center">
       <div className="max-[320px]:mx-[16px] max-md:mx-[48px] min-[769px]:ml-[112px] pt-[56px] min-[1440px]:pt-[160px] min-[1440px]:pb-[120px] flex">
         <div className="w-1/2 max-md:w-full flex flex-col max-md:items-center max-md:text-center">
           <h1 className="font-bold leading-[56px] text-[3rem] tracking-[-0.48px] text-primary">
@@ -20,7 +26,7 @@ export default function Home() {
             purus sit amet luctus venenatis, lectus magna fringilla urna,
             porttitor
           </h2>
-          <Button className="w-[230px] flex gap-2.5">
+          <Button className="w-[230px] flex gap-2.5" onClick={openSignUpModal}>
             SIGN UP NOW <Image src={ArrowRightIcon2} alt="" />
           </Button>
           <ul className="flex gap-8 max-[320px]:gap-4 mt-20 max-[320px]:mx-[16px]">
@@ -43,6 +49,40 @@ export default function Home() {
 
       <div className="max-[1440px]:w-[1440px] w-full">
         <Image src={WavesIcon} alt="" className="w-full" />
+      </div>
+
+      <div className="w-full min-[1060px]:ml-[112px] flex flex-wrap-reverse gap-8 items-center justify-center">
+        <div className="flex min-[768px]:flex-col max-md:gap-4 gap-8 max-md:overflow-x-auto max-md:pl-6 max-md:scroll-smooth max-md:will-change-scroll max-md:scrollbar-hide pb-[56px]">
+          <div className="flex max-md:gap-4 gap-8">
+            <SolutionsCard iconSrc={CryptoSolutions1Icon} />
+            <SolutionsCard iconSrc={CryptoSolutions2Icon} />
+          </div>
+          <div className="flex max-md:gap-4 gap-8 min-[768px]:ml-[104px]">
+            <SolutionsCard iconSrc={CryptoSolutions3Icon} />
+            <SolutionsCard iconSrc={CryptoSolutions4Icon} />
+          </div>
+        </div>
+
+        <div className="w-[496px] max-md:mx-6">
+          <p className="text-primary-500 font-bold max-[768px]:text-[1rem] text-[1.25rem] leading-[32px]">
+            Lorem ipsum
+          </p>
+          <h4 className="font-bold max-[768px]:text-[2rem] text-[2.5rem] text-foreground leading-[48px]">
+            Lorem ipsum
+          </h4>
+          <p className="text-foreground text-[1rem] leading-[24px] px-0 pt-[16px] min-[768px]:pb-[40px] min-[1224px]:mr-24">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam,
+            purus sit amet luctus venenatis, lectus magna fringilla urna,
+            porttitor
+          </p>
+
+          <Button
+            className="py-[14px] px-[24px] max-[1224px]:hidden"
+            onClick={openSignUpModal}
+          >
+            Sign up now
+          </Button>
+        </div>
       </div>
     </main>
   )

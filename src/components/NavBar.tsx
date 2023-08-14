@@ -61,7 +61,12 @@ export function NavBar() {
           <div className="flex gap-[24px] max-sm:hidden">
             <Dialog>
               <DialogTrigger>
-                <Button variant="link" className="p-0" ref={signInButtonRef}>
+                <Button
+                  id="signInButtonId"
+                  variant="link"
+                  className="p-0"
+                  ref={signInButtonRef}
+                >
                   Sign in
                 </Button>
               </DialogTrigger>
@@ -105,7 +110,11 @@ export function NavBar() {
 
             <Dialog>
               <DialogTrigger>
-                <Button className="py-[8px] px-[16px]" ref={signUpButtonRef}>
+                <Button
+                  id="signUpButtonId"
+                  className="py-[8px] px-[16px]"
+                  ref={signUpButtonRef}
+                >
                   <span className="mx-[17px]">Sign up</span>
                 </Button>
               </DialogTrigger>
