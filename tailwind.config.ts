@@ -29,15 +29,20 @@ module.exports = {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
           100: 'hsl(var(--primary-100))',
+          300: 'hsl(var(--primary-300))',
           500: 'hsl(var(--primary-500))',
         },
         secondary: {
           // Grey
           DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))',
+          100: 'hsl(var(--secondary-100))',
           200: 'hsl(var(--secondary-200))',
           300: 'hsl(var(--secondary-300))',
           500: 'hsl(var(--secondary-500))',
+        },
+        terniary: {
+          700: 'hsl(var(--terniary-700))',
         },
         destructive: {
           DEFAULT: 'hsl(var(--destructive))',

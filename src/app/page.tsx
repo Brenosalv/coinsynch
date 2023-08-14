@@ -9,6 +9,7 @@ import WavesIcon from '@/assets/waves.svg'
 import { Carousel } from '@/components/Carousel'
 import { SolutionsCard } from '@/components/SolutionsCard'
 import { Tag } from '@/components/Tag'
+import { TopCryptosTable } from '@/components/TopCryptosTable'
 import { Button } from '@/components/ui/button'
 import { openSignUpModal } from '@/utils/openSignUpModal'
 import Image from 'next/image'
@@ -52,7 +53,7 @@ export default function Home() {
       </div>
 
       <div className="w-full min-[1060px]:ml-[112px] flex flex-wrap-reverse gap-8 items-center justify-center">
-        <div className="flex min-[768px]:flex-col max-md:gap-4 gap-8 max-md:overflow-x-auto max-md:pl-6 max-md:scroll-smooth max-md:will-change-scroll max-md:scrollbar-hide pb-[56px]">
+        <div className="flex min-[768px]:flex-col max-md:gap-4 gap-8 max-md:overflow-x-auto max-md:pl-6 max-md:scroll-smooth max-md:will-change-scroll max-md:scrollbar-hide max-md:pb-[56px] pb-[130px]">
           <div className="flex max-md:gap-4 gap-8">
             <SolutionsCard iconSrc={CryptoSolutions1Icon} />
             <SolutionsCard iconSrc={CryptoSolutions2Icon} />
@@ -84,6 +85,8 @@ export default function Home() {
           </Button>
         </div>
       </div>
+
+      <TopCryptosTable />
     </main>
   )
 }
