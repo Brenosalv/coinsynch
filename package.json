@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint:fix": "next lint"
+    "lint:fix": "next lint",
+    "start:json-server": "json-server --watch db.json --port 5000"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.2.0",
@@ -37,6 +38,7 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
-    "@rocketseat/eslint-config": "^2.1.0"
+    "@rocketseat/eslint-config": "^2.1.0",
+    "json-server": "^0.17.3"
   }
 }

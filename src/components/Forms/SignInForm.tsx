@@ -7,7 +7,7 @@ import * as z from 'zod'
 import { Button } from '@/components/ui/button'
 import { Form } from '@/components/ui/form'
 import { toast } from '@/components/ui/use-toast'
-import { SignInFormSchema } from '@/schemas/SignInFormSchema'
+import { signInFormSchema } from '@/schemas/signInFormSchema'
 import Image from 'next/image'
 import LockIcon from '../../assets/lock.svg'
 import MailIcon from '../../assets/mail.svg'
@@ -15,11 +15,11 @@ import { Input } from '../ui/input'
 import { Link } from '../ui/link'
 
 export function SignInForm() {
-  const form = useForm<z.infer<typeof SignInFormSchema>>({
-    resolver: zodResolver(SignInFormSchema),
+  const form = useForm<z.infer<typeof signInFormSchema>>({
+    resolver: zodResolver(signInFormSchema),
   })
 
-  function onSubmit(data: z.infer<typeof SignInFormSchema>) {
+  function onSubmit(data: z.infer<typeof signInFormSchema>) {
     toast({
       description: `You successfully signed in with email ${data.email}.`,
     })

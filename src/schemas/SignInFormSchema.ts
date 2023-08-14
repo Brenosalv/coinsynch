@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-export const SignInFormSchema = z.object({
+export const signInFormSchema = z.object({
   email: z.string().email({
     message: 'It must be en email address with @.',
   }),

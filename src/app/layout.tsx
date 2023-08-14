@@ -1,3 +1,4 @@
+import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import { Toaster } from '@/components/ui/toaster'
 import type { Metadata } from 'next'
@@ -21,6 +22,7 @@ export default function RootLayout({
       <body className={roboto.className}>
         <Header className={roboto.className} />
         {children}
+        <Footer className={roboto.className} />
         <Toaster />
       </body>
     </html>

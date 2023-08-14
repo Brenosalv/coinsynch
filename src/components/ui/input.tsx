@@ -14,7 +14,7 @@ export interface InputProps
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ name, iconLeft, iconRight, type, className, placeholder }) => {
+  ({ name, iconLeft, iconRight, type, className, placeholder, disabled }) => {
     const form = useFormContext()
 
     const [isPasswordVisible, setIsPasswordVisible] = React.useState(false)
@@ -38,6 +38,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                 )}
                 <input
                   placeholder={placeholder}
+                  disabled={disabled}
                   type={
                     type === 'password'
                       ? isPasswordVisible

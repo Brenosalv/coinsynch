@@ -2,7 +2,7 @@ import { z } from 'zod'
 
 let pw = ''
 
-export const SignUpFormSchema = z.object({
+export const signUpFormSchema = z.object({
   name: z.string().nonempty({
     message: 'Name is required.',
   }),
