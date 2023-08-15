@@ -118,7 +118,7 @@ export function TopCryptosTable() {
           {invoices.slice(0, numberOfTableRows).map((invoice, index) => (
             <TableRow
               className={index % 2 === 0 ? 'bg-secondary-100' : ''}
-              key={invoice.id}
+              key={invoice.id.concat('x')}
             >
               <TableCell className="text-sm text-secondary-500">
                 {invoice.id}
@@ -150,34 +150,33 @@ export function TopCryptosTable() {
             <TableHead>Trade</TableHead>
           </TableRow>
 
-          <div className="flex justify-between mb-2 mx-4 text-secondary-500 min-[640px]:hidden">
-            <h6>Crypto</h6>
-            <h6>Trade</h6>
-          </div>
+          <TableRow className="flex justify-between text-secondary-500 min-[640px]:hidden">
+            <TableHead>Crypto</TableHead>
+            <TableHead>Trade</TableHead>
+          </TableRow>
         </TableHeader>
-        <TableBody>
-          {invoices.slice(0, numberOfTableRows).map((invoice, index) => (
-            <>
-              <TableRow
-                className={cn(
-                  index % 2 === 0 ? 'bg-secondary-100' : '',
-                  'max-sm:hidden',
-                )}
-                key={invoice.id}
-              >
-                <TableCell>{invoice.crypto}</TableCell>
-                <TableCell>
-                  <Button className="py-2 px-10 bg-terniary-700">Buy</Button>
-                </TableCell>
-              </TableRow>
+        {invoices.slice(0, numberOfTableRows).map((invoice, index) => (
+          <TableBody key={invoice.id.concat('y')}>
+            <TableRow
+              className={cn(
+                index % 2 === 0 ? 'bg-secondary-100' : '',
+                'max-sm:hidden',
+              )}
+            >
+              <TableCell>{invoice.crypto}</TableCell>
+              <TableCell>
+                <Button className="py-2 px-10 bg-terniary-700">Buy</Button>
+              </TableCell>
+            </TableRow>
 
-              <TableRow
-                className={cn(
-                  index % 2 !== 0 ? 'bg-secondary-100' : '',
-                  'min-[640px]:hidden',
-                )}
-                key={invoice.id}
-              >
+            <TableRow
+              className={cn(
+                index % 2 !== 0 ? 'bg-secondary-100' : '',
+                'min-[640px]:hidden',
+              )}
+              key={invoice.id}
+            >
+              <TableCell className="p-0">
                 <Accordion type="single" collapsible>
                   <AccordionItem value={`item-${index}`}>
                     <AccordionTrigger className="px-4">
@@ -213,10 +212,10 @@ export function TopCryptosTable() {
                     </AccordionContent>
                   </AccordionItem>
                 </Accordion>
-              </TableRow>
-            </>
-          ))}
-        </TableBody>
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        ))}
       </Table>
     </>
   )

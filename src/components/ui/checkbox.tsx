@@ -11,7 +11,7 @@ import { FormControl, FormField, FormItem, FormMessage } from './form'
 const Checkbox = React.forwardRef<
   React.ElementRef<typeof CheckboxPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>
->(({ className, name, id }) => {
+>(({ className, name, id, ...props }, ref) => {
   const form = useFormContext()
 
   return (
@@ -27,9 +27,10 @@ const Checkbox = React.forwardRef<
                 className,
               )}
               id={id}
+              ref={ref}
               checked={field.value}
               onCheckedChange={field.onChange}
-              {...field}
+              {...props}
             >
               <CheckboxPrimitive.Indicator
                 className={cn('flex items-center justify-center text-current')}

@@ -6,9 +6,9 @@ import * as z from 'zod'
 
 import { Button } from '@/components/ui/button'
 import { Form } from '@/components/ui/form'
-import { toast } from '@/components/ui/use-toast'
 import { signInFormSchema } from '@/schemas/signInFormSchema'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 import LockIcon from '../../assets/lock.svg'
 import MailIcon from '../../assets/mail.svg'
 import { Input } from '../ui/input'
@@ -19,12 +19,10 @@ export function SignInForm() {
     resolver: zodResolver(signInFormSchema),
   })
 
-  function onSubmit(data: z.infer<typeof signInFormSchema>) {
-    toast({
-      description: `You successfully signed in with email ${data.email}.`,
-    })
+  const router = useRouter()
 
-    // Here the data was not submitted for sign in as it was not required in the challenge, so I added a toast to represent that the user successfully signed in.
+  function onSubmit(data: z.infer<typeof signInFormSchema>) {
+    router.push('/dashboard')
   }
 
   return (

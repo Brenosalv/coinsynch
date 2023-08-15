@@ -1,13 +1,13 @@
+import LogoImg from '@/assets/logo.svg'
 import WavesFooterIcon from '@/assets/waves-footer.svg'
 import Image from 'next/image'
-import LogoImg from '../assets/logo.svg'
-import { SubscribeForm } from './SubscribeForm'
+import { SubscribeForm } from '../SubscribeForm'
 
-interface FooterProps {
+interface HomeFooterProps {
   className?: string
 }
 
-export function Footer({ className }: FooterProps) {
+export function HomeFooter({ className }: HomeFooterProps) {
   return (
     <footer className={className}>
       <div className="mt-[112px] max-sm:mt-[56px] bg-[linear-gradient(138deg,_#FBAB34_0%,_#AD721A_100%)] overflow-x-hidden overflow-y-hidden flex items-center justify-center relative">

@@ -5,8 +5,8 @@ import Image from 'next/image'
 import { useRef } from 'react'
 import LogoImg from '../assets/logo.svg'
 import MenuIcon from '../assets/menu.svg'
-import { SignInForm } from './Forms/SignInForm'
-import { SignUpForm } from './Forms/SignUpForm'
+import { SignInForm } from './forms/SignInForm'
+import { SignUpForm } from './forms/SignUpForm'
 import { Button } from './ui/button'
 import {
   Dialog,
