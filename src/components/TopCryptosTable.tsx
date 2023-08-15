@@ -91,9 +91,9 @@ export function TopCryptosTable() {
 
   return (
     <>
-      <h5 className="text-center font-bold text-[2rem] max-md:text-2xl max-sm:text-xl leading-10 max-md:leading-8 mb-12 max-md:mb-10 max-sm:mb-4">
+      <h3 className="text-center font-bold text-[2rem] max-md:text-2xl max-sm:text-xl leading-10 max-md:leading-8 mb-12 max-md:mb-10 max-sm:mb-4">
         Top Cryptos
-      </h5>
+      </h3>
 
       <Table className="mx-[112px] max-md:mx-[48px] max-sm:hidden">
         <TableCaption>

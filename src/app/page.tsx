@@ -22,11 +22,11 @@ export default function Home() {
           <h1 className="font-bold leading-[56px] text-[3rem] tracking-[-0.48px] text-primary">
             Lorem ipsum dolor sit amet, consectetur
           </h1>
-          <h2 className="mt-6 mb-8 text-xl">
+          <h5 className="mt-6 mb-8 text-xl">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam,
             purus sit amet luctus venenatis, lectus magna fringilla urna,
             porttitor
-          </h2>
+          </h5>
           <Button className="w-[230px] flex gap-2.5" onClick={openSignUpModal}>
             SIGN UP NOW <Image src={ArrowRightIcon2} alt="" />
           </Button>
@@ -65,12 +65,12 @@ export default function Home() {
         </div>
 
         <div className="w-[496px] max-md:mx-6">
-          <p className="text-primary-500 font-bold max-[768px]:text-[1rem] text-[1.25rem] leading-[32px]">
+          <h5 className="text-primary-500 font-bold max-[768px]:text-[1rem] text-[1.25rem] leading-[32px]">
             Lorem ipsum
-          </p>
-          <h4 className="font-bold max-[768px]:text-[2rem] text-[2.5rem] text-foreground leading-[48px]">
+          </h5>
+          <h2 className="font-bold max-[768px]:text-[2rem] text-[2.5rem] text-foreground leading-[48px]">
             Lorem ipsum
-          </h4>
+          </h2>
           <p className="text-foreground text-[1rem] leading-[24px] px-0 pt-[16px] min-[768px]:pb-[40px] min-[1224px]:mr-24">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam,
             purus sit amet luctus venenatis, lectus magna fringilla urna,
