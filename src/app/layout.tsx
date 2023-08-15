@@ -9,7 +9,7 @@ const roboto = Roboto({ subsets: ['latin'], weight: ['400', '700'] })
 
 export const metadata: Metadata = {
   title: 'CoinSynch',
-  description: 'Your crypto wallet',
+  description: 'Your crypto world',
 }
 
 export default function RootLayout({
