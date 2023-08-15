@@ -71,11 +71,19 @@ cd coinsynch
 
 ## Usage
 
-To start the project, run:
+To start the client side of the project, run:
 
 ```bash
 npm run dev
 ```
+
+To start the server side of the project, run:
+
+```bash
+npm run start:json-server
+```
+
+The fake API implemented with json-server will be available at http://localhost:5000.
 
 Access the CoinSynch application by opening your web browser and navigating to http://localhost:3000.
 
