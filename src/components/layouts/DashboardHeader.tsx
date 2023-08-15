@@ -15,6 +15,7 @@ import {
   NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu'
 import { cn } from '@/lib/utils'
+import { User } from '@/types/user'
 import Image from 'next/image'
 import { Link } from '../ui/link'
 import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet'
@@ -23,7 +24,11 @@ interface DashboardHeaderProps {
   className?: string
 }
 
-export function DashboardHeader({ className }: DashboardHeaderProps) {
+export async function DashboardHeader({ className }: DashboardHeaderProps) {
+  const response = await fetch('http://localhost:5000/users?id=1')
+  const users: User[] = await response.json()
+  const user = users[0]
+
   return (
     <header className={cn('shadow-lg', className)}>
       <nav className="flex items-center px-[40px] max-sm:px-6 py-[22px]">
@@ -62,11 +67,12 @@ export function DashboardHeader({ className }: DashboardHeaderProps) {
             <NavigationMenuList>
               <NavigationMenuItem>
                 <NavigationMenuTrigger className="max-sm:p-0">
+                  {/* There is no input for avatar in figma layout, so I kept a default Avatar */}
                   <Avatar className="mr-2 max-sm:w-6 max-sm:h-6">
                     <AvatarImage src="https://github.com/shadcn.png" />
                     <AvatarFallback>CN</AvatarFallback>
                   </Avatar>
-                  <span className="max-sm:hidden">Aulus</span>
+                  <span className="max-sm:hidden">{user.name}</span>
                 </NavigationMenuTrigger>
                 <NavigationMenuContent className="pr-4">
                   <NavigationMenuLink

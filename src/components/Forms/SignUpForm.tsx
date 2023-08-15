@@ -7,6 +7,7 @@ import * as z from 'zod'
 import { Button } from '@/components/ui/button'
 import { Form } from '@/components/ui/form'
 import { signUpFormSchema } from '@/schemas/signUpFormSchema'
+import { User } from '@/types/user'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import LockIcon from '../../assets/lock.svg'
@@ -22,8 +23,31 @@ export function SignUpForm() {
 
   const router = useRouter()
 
-  function onSubmit(data: z.infer<typeof signUpFormSchema>) {
-    router.push('/dashboard')
+  async function onSubmit(data: z.infer<typeof signUpFormSchema>) {
+    try {
+      // Prepare user data
+      const newUser: User = {
+        name: data.name,
+        email: data.email,
+        password: data.password,
+      }
+
+      // Send POST request to add user to fake API
+      const response = await fetch('http://localhost:5000/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newUser),
+      })
+
+      if (response.ok) {
+        // Successful sign-up, navigate to dashboard
+        router.push('/dashboard')
+      }
+    } catch (error) {
+      console.error('Error signing up:', error)
+    }
   }
 
   return (

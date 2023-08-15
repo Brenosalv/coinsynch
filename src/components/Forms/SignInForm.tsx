@@ -7,12 +7,14 @@ import * as z from 'zod'
 import { Button } from '@/components/ui/button'
 import { Form } from '@/components/ui/form'
 import { signInFormSchema } from '@/schemas/signInFormSchema'
+import { User } from '@/types/user'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import LockIcon from '../../assets/lock.svg'
 import MailIcon from '../../assets/mail.svg'
 import { Input } from '../ui/input'
 import { Link } from '../ui/link'
+import { toast } from '../ui/use-toast'
 
 export function SignInForm() {
   const form = useForm<z.infer<typeof signInFormSchema>>({
@@ -21,8 +23,32 @@ export function SignInForm() {
 
   const router = useRouter()
 
-  function onSubmit(data: z.infer<typeof signInFormSchema>) {
-    router.push('/dashboard')
+  async function onSubmit(data: z.infer<typeof signInFormSchema>) {
+    try {
+      // Fetch user data from your fake API using fetch or axios
+      const response = await fetch('http://localhost:5000/users') // Replace with your API endpoint
+      const users = await response.json()
+
+      // Check if the provided email and password match user data
+      const user = users.find(
+        (user: User) =>
+          user.email === data.email && user.password === data.password,
+      )
+
+      if (user) {
+        // Successful sign-in, navigate to dashboard
+        router.push('/dashboard')
+      } else {
+        // Invalid sign-in attempt, display error message
+        toast({
+          variant: 'destructive',
+          title: 'Login failed!',
+          description: 'Invalid email or password.',
+        })
+      }
+    } catch (error) {
+      console.error('Error signing in:', error)
+    }
   }
 
   return (

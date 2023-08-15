@@ -4,5 +4,13 @@
       "email": "fake@email.com",
       "id": 1
     }
+  ],
+  "users": [
+    {
+      "name": "Breno",
+      "email": "brenosalvadordefreitas@gmail.com",
+      "password": "Breno123#",
+      "id": 1
+    }
   ]
 }
