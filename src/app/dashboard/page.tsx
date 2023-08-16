@@ -1,3 +1,9 @@
+import { SideBar } from '@/components/SideBar'
+
 export default function Dashboard() {
-  return <h1>Dashboard</h1>
+  return (
+    <main className="bg-gray-100 flex mt-20 h-screen">
+      <SideBar />
+    </main>
+  )
 }

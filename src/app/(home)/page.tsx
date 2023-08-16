@@ -1,10 +1,10 @@
 'use client'
 
 import ArrowRightIcon2 from '@/assets/arrow-right-2.svg'
-import CryptoSolutions1Icon from '@/assets/crypto-solutions-1.svg'
-import CryptoSolutions2Icon from '@/assets/crypto-solutions-2.svg'
-import CryptoSolutions3Icon from '@/assets/crypto-solutions-3.svg'
-import CryptoSolutions4Icon from '@/assets/crypto-solutions-4.svg'
+import BitcoinIcon from '@/assets/bitcoin.svg'
+import CircleIcon from '@/assets/circle.svg'
+import GraphicIcon from '@/assets/graphic.svg'
+import LaptopIcon from '@/assets/laptop.svg'
 import WavesHomepageBackgroundImage from '@/assets/waves-homepage-background-image.svg'
 import { Carousel } from '@/components/Carousel'
 import { SolutionsCard } from '@/components/SolutionsCard'
@@ -55,12 +55,12 @@ export default function Home() {
       <div className="w-full min-[1060px]:ml-[112px] flex flex-wrap-reverse gap-8 items-center justify-center bg-gradient-to-b from-transparent via-transparent to-gray-100 mb-[120px] max-md:my-[80px] max-sm:my-[56px]">
         <div className="flex min-[768px]:flex-col max-md:gap-4 gap-8 max-md:overflow-x-auto max-md:pl-6 max-md:scroll-smooth max-md:will-change-scroll max-md:scrollbar-hide max-md:pb-[56px] pb-[130px]">
           <div className="flex max-md:gap-4 gap-8">
-            <SolutionsCard iconSrc={CryptoSolutions1Icon} />
-            <SolutionsCard iconSrc={CryptoSolutions2Icon} />
+            <SolutionsCard iconSrc={BitcoinIcon} />
+            <SolutionsCard iconSrc={CircleIcon} />
           </div>
           <div className="flex max-md:gap-4 gap-8 min-[768px]:ml-[104px]">
-            <SolutionsCard iconSrc={CryptoSolutions3Icon} />
-            <SolutionsCard iconSrc={CryptoSolutions4Icon} />
+            <SolutionsCard iconSrc={GraphicIcon} />
+            <SolutionsCard iconSrc={LaptopIcon} />
           </div>
         </div>
 

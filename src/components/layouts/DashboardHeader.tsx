@@ -1,7 +1,7 @@
-import CryptoSolutions1Icon from '@/assets/crypto-solutions-1.svg'
-import CryptoSolutions2Icon from '@/assets/crypto-solutions-2.svg'
-import CryptoSolutions3Icon from '@/assets/crypto-solutions-3.svg'
-import CryptoSolutions4Icon from '@/assets/crypto-solutions-4.svg'
+import BitcoinIcon from '@/assets/bitcoin.svg'
+import CircleIcon from '@/assets/circle.svg'
+import GraphicIcon from '@/assets/graphic.svg'
+import LaptopIcon from '@/assets/laptop.svg'
 import LogoImg from '@/assets/logo.svg'
 import LogoutIcon from '@/assets/logout.svg'
 import MenuIcon from '@/assets/menu.svg'
@@ -30,7 +30,13 @@ export async function DashboardHeader({ className }: DashboardHeaderProps) {
   const user = users[0]
 
   return (
-    <header className={cn('shadow-lg', className)}>
+    <header
+      className={cn(
+        'shadow-lg',
+        'absolute bg-white top-0 left-0 right-0',
+        className,
+      )}
+    >
       <nav className="flex items-center px-[40px] max-sm:px-6 py-[22px]">
         <Sheet>
           <SheetTrigger className="min-[640px]:hidden">
@@ -39,19 +45,19 @@ export async function DashboardHeader({ className }: DashboardHeaderProps) {
           <SheetContent side="left">
             <div className="flex flex-col gap-8 items-start pt-8">
               <Link href="#" className="flex gap-4 items-center">
-                <Image src={CryptoSolutions1Icon} width={32} alt="" />
+                <Image src={BitcoinIcon} width={32} alt="" />
                 Lorem Ipsum
               </Link>
               <Link href="#" className="flex gap-4 items-center">
-                <Image src={CryptoSolutions2Icon} width={32} alt="" />
+                <Image src={CircleIcon} width={32} alt="" />
                 Lorem Ipsum
               </Link>
               <Link href="#" className="flex gap-4 items-center">
-                <Image src={CryptoSolutions3Icon} width={32} alt="" />
+                <Image src={GraphicIcon} width={32} alt="" />
                 Lorem Ipsum
               </Link>
               <Link href="#" className="flex gap-4 items-center">
-                <Image src={CryptoSolutions4Icon} width={32} alt="" />
+                <Image src={LaptopIcon} width={32} alt="" />
                 Lorem Ipsum
               </Link>
             </div>

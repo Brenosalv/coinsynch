@@ -1,9 +1,17 @@
 import { DashboardHeader } from '@/components/layouts/DashboardHeader'
 import { Toaster } from '@/components/ui/toaster'
+import { TooltipProvider } from '@/components/ui/tooltip'
+import { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
 import '../globals.css'
 
 const roboto = Roboto({ subsets: ['latin'], weight: ['400', '700'] })
+
+export const metadata: Metadata = {
+  title: 'CoinSynch - Dashboard',
+  description:
+    'Dashboard for managing, buying and selling coins with your crypto wallet',
+}
 
 export default function RootLayout({
   children,
@@ -13,9 +21,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={roboto.className}>
-        <DashboardHeader className={roboto.className} />
-        {children}
-        <Toaster />
+        <TooltipProvider>
+          <DashboardHeader className={roboto.className} />
+          {children}
+          <Toaster />
+        </TooltipProvider>
       </body>
     </html>
   )
