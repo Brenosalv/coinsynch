@@ -1,4 +1,4 @@
-import EduphantsImage from '@/assets/eduphants.png'
+import EduphantsImage from '@/assets/eduphants.svg'
 import Image from 'next/image'
 
 export function NftsNews() {
@@ -12,7 +12,7 @@ export function NftsNews() {
         <p className="text-xs text-primary-400 max-sm:hidden">Read more +</p>
       </div>
 
-      <div className="w-1/2 max-sm:w-full rounded-e-lg max-sm:rounded-b-lg sm:h-28">
+      <div className="w-1/2 max-sm:w-full rounded-e-lg max-sm:rounded-b-lg md:h-28 flex">
         <Image
           src={EduphantsImage}
           alt="Eduphant's picture"
