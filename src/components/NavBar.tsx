@@ -112,7 +112,7 @@ export function NavBar() {
               <DialogTrigger>
                 <Button
                   id="signUpButtonId"
-                  className="py-[8px] px-[16px]"
+                  className="py-[8px] px-[16px] h-8"
                   ref={signUpButtonRef}
                 >
                   <span className="mx-[17px]">Sign up</span>

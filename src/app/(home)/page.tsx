@@ -27,7 +27,10 @@ export default function Home() {
             purus sit amet luctus venenatis, lectus magna fringilla urna,
             porttitor
           </h5>
-          <Button className="w-[230px] flex gap-2.5" onClick={openSignUpModal}>
+          <Button
+            className="w-[230px] flex gap-2.5 h-10"
+            onClick={openSignUpModal}
+          >
             SIGN UP NOW <Image src={ArrowRightIcon2} alt="" />
           </Button>
           <ul className="flex gap-8 max-[320px]:gap-4 mt-20 max-[320px]:mx-[16px]">
@@ -78,7 +81,7 @@ export default function Home() {
           </p>
 
           <Button
-            className="py-[14px] px-[24px] max-[1224px]:hidden"
+            className="py-[14px] px-[24px] max-[1224px]:hidden h-10"
             onClick={openSignUpModal}
           >
             Sign up now
