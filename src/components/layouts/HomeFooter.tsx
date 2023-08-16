@@ -28,9 +28,9 @@ export function HomeFooter() {
         </div>
       </div>
 
-      <div className="flex justify-between mx-[112px] max-md:mx-[48px] my-6 max-md:my-6">
+      <div className="flex justify-between mx-[112px] max-md:mx-12 py-6 max-md:py-6">
         <p className="text-sm max-sm:hidden">
-          CopyriCopyright © 2023 - All rights reservedght
+          CopyriCopyright © 2023 - All rights reserved
         </p>
 
         <Image

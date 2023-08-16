@@ -25,7 +25,7 @@ export async function DashboardHeader() {
   const user = users[0]
 
   return (
-    <header className="shadow-lg absolute bg-white top-0 left-0 right-0">
+    <header className="shadow-lg  bg-white">
       <nav className="flex items-center px-[40px] max-sm:px-6 py-[22px]">
         <Sheet>
           <SheetTrigger className="min-[640px]:hidden">

@@ -1,6 +1,8 @@
+import { DashboardFooter } from '@/components/layouts/DashboardFooter'
 import { DashboardHeader } from '@/components/layouts/DashboardHeader'
 import { Toaster } from '@/components/ui/toaster'
 import { TooltipProvider } from '@/components/ui/tooltip'
+import { cn } from '@/lib/utils'
 import { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
 import '../globals.css'
@@ -20,10 +22,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={roboto.className}>
+      <body className={(cn(roboto.className), 'h-screen flex flex-col')}>
         <TooltipProvider>
           <DashboardHeader />
           {children}
+          <DashboardFooter />
           <Toaster />
         </TooltipProvider>
       </body>

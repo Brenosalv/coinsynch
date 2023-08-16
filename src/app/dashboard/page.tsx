@@ -6,7 +6,7 @@ import { NftsNews } from '@/components/dashboard/NftsNews'
 
 export default function Dashboard() {
   return (
-    <main className="bg-gray-100 flex mt-20 h-screen w-full">
+    <main className="bg-gray-100 flex flex-1">
       <SideBar />
 
       <div className="m-16 max-sm:m-6 w-full flex flex-col gap-8">
