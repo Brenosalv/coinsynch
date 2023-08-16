@@ -18,6 +18,7 @@ export function SideBar() {
             className="cursor-pointer transform hover:scale-125 transition duration-150"
             src={WalletIcon}
             width={32}
+            height={32}
             alt=""
           />
         </TooltipTrigger>
@@ -32,6 +33,7 @@ export function SideBar() {
             className="cursor-pointer transform hover:scale-125 transition duration-150"
             src={CircleIcon}
             width={32}
+            height={32}
             alt=""
           />
         </TooltipTrigger>
@@ -46,6 +48,7 @@ export function SideBar() {
             className="cursor-pointer transform hover:scale-125 transition duration-150"
             src={BitcoinIcon}
             width={32}
+            height={32}
             alt=""
           />
         </TooltipTrigger>
@@ -60,6 +63,7 @@ export function SideBar() {
             className="cursor-pointer transform hover:scale-125 transition duration-150"
             src={GraphicIcon}
             width={32}
+            height={32}
             alt=""
           />
         </TooltipTrigger>
