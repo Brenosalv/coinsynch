@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={roboto.className}>
         <TooltipProvider>
-          <DashboardHeader className={roboto.className} />
+          <DashboardHeader />
           {children}
           <Toaster />
         </TooltipProvider>

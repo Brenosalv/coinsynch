@@ -20,9 +20,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={roboto.className}>
-        <HomeHeader className={roboto.className} />
+        <HomeHeader />
         {children}
-        <HomeFooter className={roboto.className} />
+        <HomeFooter />
         <Toaster />
       </body>
     </html>

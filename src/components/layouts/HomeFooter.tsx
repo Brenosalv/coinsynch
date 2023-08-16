@@ -3,13 +3,9 @@ import WavesFooterIcon from '@/assets/waves-footer.svg'
 import Image from 'next/image'
 import { SubscribeForm } from '../SubscribeForm'
 
-interface HomeFooterProps {
-  className?: string
-}
-
-export function HomeFooter({ className }: HomeFooterProps) {
+export function HomeFooter() {
   return (
-    <footer className={className}>
+    <footer>
       <div className="mt-[112px] max-sm:mt-[56px] bg-[linear-gradient(138deg,_#FBAB34_0%,_#AD721A_100%)] overflow-x-hidden overflow-y-hidden flex items-center justify-center relative">
         <div className="max-[1440px]:min-w-[1440px] w-full absolute z-0">
           <Image src={WavesFooterIcon} alt="" className="w-full" />

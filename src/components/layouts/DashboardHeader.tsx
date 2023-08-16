@@ -14,29 +14,18 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu'
-import { cn } from '@/lib/utils'
 import { User } from '@/types/user'
 import Image from 'next/image'
 import { Link } from '../ui/link'
 import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet'
 
-interface DashboardHeaderProps {
-  className?: string
-}
-
-export async function DashboardHeader({ className }: DashboardHeaderProps) {
+export async function DashboardHeader() {
   const response = await fetch('http://localhost:5000/users?id=1')
   const users: User[] = await response.json()
   const user = users[0]
 
   return (
-    <header
-      className={cn(
-        'shadow-lg',
-        'absolute bg-white top-0 left-0 right-0',
-        className,
-      )}
-    >
+    <header className="shadow-lg absolute bg-white top-0 left-0 right-0">
       <nav className="flex items-center px-[40px] max-sm:px-6 py-[22px]">
         <Sheet>
           <SheetTrigger className="min-[640px]:hidden">

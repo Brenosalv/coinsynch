@@ -1,12 +1,8 @@
 import { NavBar } from '../NavBar'
 
-interface HomeHeaderProps {
-  className?: string
-}
-
-export function HomeHeader({ className }: HomeHeaderProps) {
+export function HomeHeader() {
   return (
-    <header className={className}>
+    <header>
       <NavBar />
     </header>
   )
