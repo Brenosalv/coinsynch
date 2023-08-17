@@ -25,10 +25,10 @@ export async function DashboardHeader() {
   const user = users[0]
 
   return (
-    <header className="shadow-lg  bg-white">
+    <header className="shadow-lg bg-white">
       <nav className="flex items-center px-[40px] max-sm:px-6 py-[22px]">
         <Sheet>
-          <SheetTrigger className="min-[640px]:hidden">
+          <SheetTrigger className="md:hidden">
             <Image src={MenuIcon} alt="Menu" width={24} height={24} />
           </SheetTrigger>
           <SheetContent side="left">
@@ -53,7 +53,7 @@ export async function DashboardHeader() {
           </SheetContent>
         </Sheet>
 
-        <Link href="#" className="mx-auto min-[640px]:ml-0">
+        <Link href="#" className="mx-auto md:ml-0">
           <Image src={LogoImg} alt="Logo" height={21} className="max-sm:h-4" />
         </Link>
 

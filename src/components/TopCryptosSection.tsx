@@ -16,78 +16,29 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import { cn } from '@/lib/utils'
+import { formatCurrency } from '@/utils/formatCurrency'
+import { truncateNumberToFixedDecimals } from '@/utils/truncateNumberToFixedDecimals'
 import { useState } from 'react'
+import { CryptoProfile } from './CryptoProfile'
 import { Button } from './ui/button'
 
-const invoices = [
-  {
-    id: '01',
-    crypto: 'Bitcoin',
-    price: 'US$25.499,52',
-    change: '+5,65%',
-  },
-  {
-    id: '02',
-    crypto: 'Ethereum',
-    price: 'US$25.499,52',
-    change: '-5,65%',
-  },
-  {
-    id: '03',
-    crypto: 'Cardano',
-    price: 'US$25.499,52',
-    change: '-5,65%',
-  },
-  {
-    id: '04',
-    crypto: 'Solana',
-    price: 'US$25.499,52',
-    change: '-5,65%',
-  },
-  {
-    id: '05',
-    crypto: 'Solana',
-    price: 'US$25.499,52',
-    change: '-5,65%',
-  },
-  {
-    id: '06',
-    crypto: 'Solana',
-    price: 'US$25.499,52',
-    change: '-5,65%',
-  },
-  {
-    id: '07',
-    crypto: 'Solana',
-    price: 'US$25.499,52',
-    change: '-5,65%',
-  },
-  {
-    id: '08',
-    crypto: 'Solana',
-    price: 'US$25.499,52',
-    change: '-5,65%',
-  },
-  {
-    id: '09',
-    crypto: 'Solana',
-    price: 'US$25.499,52',
-    change: '-5,65%',
-  },
-  {
-    id: '10',
-    crypto: 'Solana',
-    price: 'US$25.499,52',
-    change: '-5,65%',
-  },
-]
-
-export function TopCryptosTable() {
+export function TopCryptosSection() {
   const [numberOfTableRows, setNumberOfTableRows] = useState<number>(4)
 
   function handleViewMoreOrLessButton() {
     setNumberOfTableRows((prev) => (prev === 4 ? Infinity : 4))
   }
+
+  const fakeCryptos = [
+    {
+      asset_id: 'aaaaa',
+      name: 'coin',
+      icon_url:
+        'https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_16/f231d7382689406f9a50dde841418c64.png',
+      price_change: 0.00252,
+      price_usd: 2,
+    },
+  ]
 
   return (
     <>
@@ -105,29 +56,47 @@ export function TopCryptosTable() {
             {numberOfTableRows === 4 ? 'View more +' : 'View less'}
           </Button>
         </TableCaption>
-        <TableHeader>
+        <TableHeader className="bg-white">
           <TableRow>
-            <TableHead className="w-[100px]">#</TableHead>
-            <TableHead>Crypto</TableHead>
-            <TableHead>Price</TableHead>
+            <TableHead className="w-[100px] text-left">#</TableHead>
+            <TableHead className="text-left">Crypto</TableHead>
+            <TableHead className="text-left">Price</TableHead>
             <TableHead>Change</TableHead>
-            <TableHead>Trade</TableHead>
+            <TableHead className="text-right pr-6">Trade</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {invoices.slice(0, numberOfTableRows).map((invoice, index) => (
+          {fakeCryptos?.slice(0, numberOfTableRows).map((crypto, index) => (
             <TableRow
-              className={index % 2 === 0 ? 'bg-secondary-100' : ''}
-              key={invoice.id.concat('x')}
+              className={'even:bg-secondary-100 odd:bg-white'}
+              key={crypto?.asset_id?.concat('x')}
             >
-              <TableCell className="text-sm text-secondary-500">
-                {invoice.id}
+              <TableCell className="text-sm text-secondary-500 text-left">
+                0{index + 1}
               </TableCell>
-              <TableCell>{invoice.crypto}</TableCell>
-              <TableCell>{invoice.price}</TableCell>
-              <TableCell>{invoice.change}</TableCell>
               <TableCell>
-                <Button className="py-2 px-10 bg-terniary-700">Buy</Button>
+                <CryptoProfile iconSize={32} {...crypto} />
+              </TableCell>
+              <TableCell className="text-left">
+                {formatCurrency(crypto?.price_usd)}
+              </TableCell>
+              <TableCell
+                className={cn(
+                  crypto?.price_change > 0
+                    ? 'text-terniary-700'
+                    : 'text-quaternary-700',
+                  'text-base text-foreground',
+                )}
+              >
+                {Number(
+                  truncateNumberToFixedDecimals(crypto?.price_change, 2),
+                ) > 0
+                  ? '+'
+                  : ''}
+                {truncateNumberToFixedDecimals(crypto?.price_change, 2)}%
+              </TableCell>
+              <TableCell className="flex justify-end pr-6">
+                <Button className="py-2 px-10 bg-terniary-700 h-8">Buy</Button>
               </TableCell>
             </TableRow>
           ))}
@@ -155,15 +124,17 @@ export function TopCryptosTable() {
             <TableHead>Trade</TableHead>
           </TableRow>
         </TableHeader>
-        {invoices.slice(0, numberOfTableRows).map((invoice, index) => (
-          <TableBody key={invoice.id.concat('y')}>
+        {fakeCryptos.slice(0, numberOfTableRows).map((crypto, index) => (
+          <TableBody key={crypto.asset_id.concat('y')}>
             <TableRow
               className={cn(
                 index % 2 === 0 ? 'bg-secondary-100' : '',
                 'max-sm:hidden',
               )}
             >
-              <TableCell>{invoice.crypto}</TableCell>
+              <TableCell>
+                <CryptoProfile {...crypto} />
+              </TableCell>
               <TableCell>
                 <Button className="py-2 px-10 bg-terniary-700">Buy</Button>
               </TableCell>
@@ -174,13 +145,13 @@ export function TopCryptosTable() {
                 index % 2 !== 0 ? 'bg-secondary-100' : '',
                 'min-[640px]:hidden',
               )}
-              key={invoice.id}
+              key={crypto.asset_id}
             >
               <TableCell className="p-0">
                 <Accordion type="single" collapsible>
                   <AccordionItem value={`item-${index}`}>
                     <AccordionTrigger className="px-4">
-                      {invoice.crypto}
+                      <CryptoProfile {...crypto} />
                     </AccordionTrigger>
                     <AccordionContent>
                       <Table className="flex justify-between">
@@ -199,12 +170,15 @@ export function TopCryptosTable() {
                         <TableBody>
                           <TableRow>
                             <TableCell className="text-right text-sm pb-2">
-                              US$ 25.499,52
+                              {formatCurrency(crypto.price_usd)}
                             </TableCell>
                           </TableRow>
                           <TableRow>
                             <TableCell className="text-right text-sm pt-2">
-                              +5,65%
+                              {truncateNumberToFixedDecimals(
+                                crypto.price_change,
+                                2,
+                              )}
                             </TableCell>
                           </TableRow>
                         </TableBody>

@@ -3,10 +3,14 @@ import { Balance } from '@/components/dashboard/Balance'
 import { DailyVariation } from '@/components/dashboard/DailyVariation'
 import { MyWallet } from '@/components/dashboard/MyWallet'
 import { NftsNews } from '@/components/dashboard/NftsNews'
+import { cn } from '@/lib/utils'
+import { Roboto } from 'next/font/google'
+
+const roboto = Roboto({ subsets: ['latin'], weight: ['400', '700'] })
 
 export default function Dashboard() {
   return (
-    <main className="bg-gray-100 flex flex-1">
+    <main className={cn(roboto.className, 'bg-gray-100 flex flex-1')}>
       <SideBar />
 
       <div className="m-16 max-sm:m-6 w-full flex flex-col gap-8">

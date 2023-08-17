@@ -9,14 +9,23 @@ import WavesHomepageBackgroundImage from '@/assets/waves-homepage-background-ima
 import { Carousel } from '@/components/Carousel'
 import { SolutionsCard } from '@/components/SolutionsCard'
 import { Tag } from '@/components/Tag'
-import { TopCryptosTable } from '@/components/TopCryptosTable'
+import { TopCryptosSection } from '@/components/TopCryptosSection'
 import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 import { openSignUpModal } from '@/utils/openSignUpModal'
+import { Roboto } from 'next/font/google'
 import Image from 'next/image'
+
+const roboto = Roboto({ subsets: ['latin'], weight: ['400', '700'] })
 
 export default function Home() {
   return (
-    <main className="overflow-x-hidden overflow-y-hidden flex flex-col items-center">
+    <main
+      className={cn(
+        roboto.className,
+        'overflow-x-hidden overflow-y-hidden flex flex-col items-center',
+      )}
+    >
       <div className="max-[320px]:mx-[16px] max-md:mx-[48px] min-[769px]:ml-[112px] pt-[56px] min-[1440px]:pt-[160px] min-[1440px]:pb-[120px] flex">
         <div className="w-1/2 max-md:w-full flex flex-col max-md:items-center max-md:text-center">
           <h1 className="font-bold leading-[56px] text-[3rem] tracking-[-0.48px] text-primary">
@@ -89,7 +98,7 @@ export default function Home() {
         </div>
       </div>
 
-      <TopCryptosTable />
+      <TopCryptosSection />
     </main>
   )
 }

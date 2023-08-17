@@ -2,6 +2,8 @@ import { DashboardFooter } from '@/components/layouts/DashboardFooter'
 import { DashboardHeader } from '@/components/layouts/DashboardHeader'
 import { Toaster } from '@/components/ui/toaster'
 import { TooltipProvider } from '@/components/ui/tooltip'
+import { ApiCryptoProvider } from '@/contexts/ApiCryptoContext'
+import { WalletProvider } from '@/contexts/WalletContext'
 import { cn } from '@/lib/utils'
 import { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
@@ -24,10 +26,14 @@ export default function RootLayout({
     <html lang="en">
       <body className={(cn(roboto.className), 'h-screen flex flex-col')}>
         <TooltipProvider>
-          <DashboardHeader />
-          {children}
-          <DashboardFooter />
-          <Toaster />
+          <ApiCryptoProvider>
+            <WalletProvider>
+              <DashboardHeader />
+              {children}
+              <DashboardFooter />
+              <Toaster />
+            </WalletProvider>
+          </ApiCryptoProvider>
         </TooltipProvider>
       </body>
     </html>

@@ -29,8 +29,10 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     }
 
     function handleNumberDecrease() {
-      if (inputRef.current && Number(inputRef.current.value) >= 1) {
-        const newValue = String(Number(inputRef.current.value) - 1)
+      if (inputRef.current && Number(inputRef.current.value) >= 0.01) {
+        const newValue = String(
+          (Number(inputRef.current.value) - 0.01).toFixed(2),
+        )
         inputRef.current.value = newValue
         form.setValue('quantity', newValue)
       }
@@ -38,7 +40,9 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
     function handleNumberIncrease() {
       if (inputRef.current) {
-        const newValue = String(Number(inputRef.current.value) + 1)
+        const newValue = String(
+          (Number(inputRef.current.value) + 0.01).toFixed(2),
+        )
         inputRef.current.value = newValue
         form.setValue('quantity', newValue)
       }
@@ -77,7 +81,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                       : type
                   }
                   className={cn(
-                    'relative flex w-full rounded-md border border-input bg-background px-[2.25rem] py-3 text-base  ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 max-md:text-base max-sm:text-sm placeholder:max-md:text-base placeholder:max-sm:text-sm',
+                    'relative flex w-full rounded-md border border-input bg-background px-[2.25rem] py-3 text-base  ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 max-md:text-base max-sm:text-sm placeholder:max-md:text-base placeholder:max-sm:text-sm chevron-none',
                     iconLeft && 'pl-10',
                     className,
                   )}
@@ -90,7 +94,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                     field.onChange(event)
                   }}
                 />
-                <i className="absolute right-5 bottom-2.5 text-secondary-300">
+                <i className="absolute right-5 bottom-1.5 text-secondary-300">
                   {type === 'number' && (
                     <>
                       <ChevronUp size={16} onClick={handleNumberIncrease} />

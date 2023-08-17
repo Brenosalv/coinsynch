@@ -46,6 +46,9 @@ module.exports = {
         terniary: {
           700: 'hsl(var(--terniary-700))',
         },
+        quaternary: {
+          700: 'hsl(var(--quaternary-700))',
+        },
         destructive: {
           DEFAULT: 'hsl(var(--destructive))',
           foreground: 'hsl(var(--destructive-foreground))',
@@ -107,6 +110,13 @@ module.exports = {
           '&::-webkit-scrollbar': {
             display: 'none',
           },
+        },
+        '.chevron-none': {
+          '&::-webkit-inner-spin-button': {
+            '-webkit-appearance': 'none',
+            margin: '0',
+          },
+          '-moz-appearance': 'textfield',
         },
       })
     }),

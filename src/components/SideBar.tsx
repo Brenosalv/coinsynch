@@ -11,7 +11,7 @@ import Image from 'next/image'
 
 export function SideBar() {
   return (
-    <aside className="px-6 pt-12 bg-white w-fit border-t space-y-8 flex flex-col max-sm:hidden">
+    <aside className="px-6 pt-12 bg-white w-fit border-t space-y-8 flex flex-col max-md:hidden">
       <Tooltip>
         <TooltipTrigger>
           <Image
