@@ -1,15 +1,14 @@
 'use client'
 
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm } from 'react-hook-form'
-import * as z from 'zod'
-
 import { Button } from '@/components/ui/button'
 import { Form } from '@/components/ui/form'
 import { signInFormSchema } from '@/schemas/signInFormSchema'
 import { User } from '@/types/user'
+import { zodResolver } from '@hookform/resolvers/zod'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+import { useForm } from 'react-hook-form'
+import * as z from 'zod'
 import LockIcon from '../../assets/lock.svg'
 import MailIcon from '../../assets/mail.svg'
 import { Input } from '../ui/input'
@@ -72,7 +71,7 @@ export function SignInForm() {
         <div className="text-right mt-[-16px]">
           <Link href="#">Forgot password?</Link>
         </div>
-        <Button type="submit" className="w-full py-[0.875rem] px-[1.5rem]">
+        <Button type="submit" className="w-full py-[0.875rem] px-[1.5rem] h-10">
           Sign in
         </Button>
       </form>

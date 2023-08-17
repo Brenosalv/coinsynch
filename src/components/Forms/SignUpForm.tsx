@@ -1,15 +1,14 @@
 'use client'
 
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm } from 'react-hook-form'
-import * as z from 'zod'
-
 import { Button } from '@/components/ui/button'
 import { Form } from '@/components/ui/form'
 import { signUpFormSchema } from '@/schemas/signUpFormSchema'
 import { User } from '@/types/user'
+import { zodResolver } from '@hookform/resolvers/zod'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+import { useForm } from 'react-hook-form'
+import * as z from 'zod'
 import LockIcon from '../../assets/lock.svg'
 import MailIcon from '../../assets/mail.svg'
 import UserIcon from '../../assets/user.svg'
@@ -32,7 +31,7 @@ export function SignUpForm() {
         password: data.password,
       }
 
-      // Send POST request to add user to fake API
+      // Send POST request to add user to db
       const response = await fetch('http://localhost:5000/users', {
         method: 'POST',
         headers: {
@@ -87,7 +86,7 @@ export function SignUpForm() {
             <span className="font-bold">Terms of User Sign up.</span>
           </label>
         </div>
-        <Button type="submit" className="w-full py-[0.875rem] px-[1.5rem]">
+        <Button type="submit" className="w-full py-[0.875rem] px-[1.5rem] h-10">
           Sign up
         </Button>
       </form>

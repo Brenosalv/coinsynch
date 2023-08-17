@@ -3,7 +3,7 @@
 import * as React from 'react'
 
 import { cn } from '@/lib/utils'
-import { EyeIcon, EyeOffIcon } from 'lucide-react'
+import { ChevronDown, ChevronUp, EyeIcon, EyeOffIcon } from 'lucide-react'
 import { useFormContext } from 'react-hook-form'
 import { FormControl, FormField, FormItem, FormMessage } from './form'
 
@@ -22,8 +22,33 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
     const [isPasswordVisible, setIsPasswordVisible] = React.useState(false)
 
+    const inputRef = React.useRef<HTMLInputElement | null>(null)
+
     function handlePasswordVisibilityToggle() {
       setIsPasswordVisible((prev) => !prev)
+    }
+
+    function handleNumberDecrease() {
+      if (inputRef.current && Number(inputRef.current.value) >= 1) {
+        const newValue = String(Number(inputRef.current.value) - 1)
+        inputRef.current.value = newValue
+        form.setValue('quantity', newValue)
+      }
+    }
+
+    function handleNumberIncrease() {
+      if (inputRef.current) {
+        const newValue = String(Number(inputRef.current.value) + 1)
+        inputRef.current.value = newValue
+        form.setValue('quantity', newValue)
+      }
+    }
+
+    function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
+      if (type === 'number') {
+        // Allow only positive numbers in number input
+        event.target.value = event.target.value.replace(/[^-0-9.]/g, '')
+      }
     }
 
     return (
@@ -42,6 +67,8 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                 <input
                   placeholder={placeholder}
                   disabled={disabled}
+                  min={0}
+                  step={0.01}
                   type={
                     type === 'password'
                       ? isPasswordVisible
@@ -55,7 +82,22 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                     className,
                   )}
                   {...field}
+                  ref={inputRef}
+                  onChange={(event) => {
+                    if (type === 'number') {
+                      handleInputChange(event)
+                    }
+                    field.onChange(event)
+                  }}
                 />
+                <i className="absolute right-5 bottom-2.5 text-secondary-300">
+                  {type === 'number' && (
+                    <>
+                      <ChevronUp size={16} onClick={handleNumberIncrease} />
+                      <ChevronDown size={16} onClick={handleNumberDecrease} />
+                    </>
+                  )}
+                </i>
                 <i className="absolute right-4 bottom-3 text-secondary-300">
                   {type === 'password' ? (
                     isPasswordVisible ? (

@@ -12,5 +12,32 @@
       "password": "Breno123#",
       "id": 1
     }
+  ],
+  "wallet": [
+    {
+      "type": "light",
+      "quantity": "1",
+      "id": 1
+    },
+    {
+      "type": "light",
+      "quantity": "1",
+      "id": 2
+    },
+    {
+      "type": "light",
+      "quantity": "1",
+      "id": 3
+    },
+    {
+      "type": "BTC",
+      "quantity": "3",
+      "id": 4
+    },
+    {
+      "type": "BTC",
+      "quantity": "3",
+      "id": 5
+    }
   ]
 }
