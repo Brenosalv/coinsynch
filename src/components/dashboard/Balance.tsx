@@ -30,7 +30,7 @@ export function Balance() {
         </div>
       </div>
       <div className="px-14 max-sm:px-6 py-9 max-sm:py-3 bg-primary-100 rounded-e-lg text-center flex items-center justify-center font-bold text-3xl max-sm:text-base flex-1">
-        <h3>{formatCurrency(balance)}</h3>
+        <h3>{formatCurrency(balance, 'narrowSymbol')}</h3>
       </div>
     </div>
   )

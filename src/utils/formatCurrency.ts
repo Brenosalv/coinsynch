@@ -1,8 +1,11 @@
-export function formatCurrency(value: number): string {
+export function formatCurrency(
+  value: number,
+  currencyDisplay = 'symbol',
+): string {
   const formatter = new Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'USD',
-    currencyDisplay: 'symbol',
+    currencyDisplay,
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   })

@@ -106,7 +106,7 @@ export function ApiCryptoProvider({ children }: { children: React.ReactNode }) {
       }
     }
 
-    fetchCryptoTypes()
+    // fetchCryptoTypes()
   }, [])
 
   return (
