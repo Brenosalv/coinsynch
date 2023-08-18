@@ -36,10 +36,7 @@ export function SubscribeForm() {
       }
 
       // Send a POST request to the fake API using fetch
-      const response = await fetch(
-        'http://localhost:5000/subscriptions',
-        requestOptions,
-      )
+      await fetch('http://localhost:5000/subscriptions', requestOptions)
 
       // Clear the form and loading state
       form.reset()

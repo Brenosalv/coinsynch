@@ -21,8 +21,8 @@ import { formatCurrency } from '@/utils/formatCurrency'
 import { getFormattedPriceChange } from '@/utils/getFormattedPriceChange'
 import { getPriceChangeStyles } from '@/utils/priceChangeStyles'
 import { useState } from 'react'
-import { CryptoProfile } from './CryptoProfile'
-import { Button } from './ui/button'
+import { CryptoProfile } from '../dashboard/CryptoProfile'
+import { Button } from '../ui/button'
 
 export function TopCryptosSection() {
   const [numberOfTableRows, setNumberOfTableRows] = useState<number>(4)

@@ -7,11 +7,11 @@ import { getFormattedPriceChange } from '@/utils/getFormattedPriceChange'
 import Image from 'next/image'
 import { useRef } from 'react'
 import Marquee from 'react-fast-marquee'
-import LogoImg from '../assets/logo.svg'
-import MenuIcon from '../assets/menu.svg'
-import { SignInForm } from './forms/SignInForm'
-import { SignUpForm } from './forms/SignUpForm'
-import { Button } from './ui/button'
+import LogoImg from '../../assets/logo.svg'
+import MenuIcon from '../../assets/menu.svg'
+import { SignInForm } from '../forms/SignInForm'
+import { SignUpForm } from '../forms/SignUpForm'
+import { Button } from '../ui/button'
 import {
   Dialog,
   DialogContent,
@@ -19,8 +19,8 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from './ui/dialog'
-import { Link } from './ui/link'
+} from '../ui/dialog'
+import { Link } from '../ui/link'
 
 export function NavBar() {
   const signInButtonRef = useRef<HTMLButtonElement>(null)

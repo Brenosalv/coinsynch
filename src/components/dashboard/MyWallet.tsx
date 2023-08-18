@@ -34,10 +34,10 @@ import { getPriceChangeStyles } from '@/utils/priceChangeStyles'
 import { DialogDescription } from '@radix-ui/react-dialog'
 import Image from 'next/image'
 import { useState } from 'react'
-import { CryptoProfile } from '../CryptoProfile'
 import { AddCryptoForm } from '../forms/AddCryptoForm'
 import { TransferCryptoForm } from '../forms/TransferCryptoForm'
 import { Button } from '../ui/button'
+import { CryptoProfile } from './CryptoProfile'
 
 export function MyWallet() {
   const [numberOfCards, setNumberOfCards] = useState<number>(4)

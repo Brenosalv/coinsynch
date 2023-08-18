@@ -26,7 +26,7 @@ export async function DashboardHeader() {
 
   return (
     <header className="shadow-lg bg-white">
-      <nav className="flex items-center px-[40px] max-sm:px-6 py-[22px]">
+      <nav className="flex items-center px-[40px] max-sm:px-6 py-4">
         <Sheet>
           <SheetTrigger className="md:hidden">
             <Image src={MenuIcon} alt="Menu" width={24} height={24} />

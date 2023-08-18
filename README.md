@@ -77,6 +77,9 @@ To start the client side of the project, run:
 npm run dev
 ```
 
+OBS: Add the coinapi.io API key in a .env.local file in the root folder as follow:
+NEXT_PUBLIC_COIN_API_KEY=
+
 To start the server side of the project, run:
 
 ```bash

@@ -1,7 +1,7 @@
 import LogoImg from '@/assets/logo.svg'
 import WavesFooterIcon from '@/assets/waves-footer.svg'
 import Image from 'next/image'
-import { SubscribeForm } from '../SubscribeForm'
+import { SubscribeForm } from '../forms/SubscribeForm'
 
 export function HomeFooter() {
   return (

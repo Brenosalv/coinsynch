@@ -1,8 +1,8 @@
-import { SideBar } from '@/components/SideBar'
 import { Balance } from '@/components/dashboard/Balance'
 import { DailyVariation } from '@/components/dashboard/DailyVariation'
 import { MyWallet } from '@/components/dashboard/MyWallet'
 import { NftsNews } from '@/components/dashboard/NftsNews'
+import { SideBar } from '@/components/dashboard/SideBar'
 import { cn } from '@/lib/utils'
 import { Roboto } from 'next/font/google'
 
