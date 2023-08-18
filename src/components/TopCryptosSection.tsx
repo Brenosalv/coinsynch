@@ -15,6 +15,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
+import { useApiCryptoContext } from '@/contexts/ApiCryptoContext'
 import { cn } from '@/lib/utils'
 import { formatCurrency } from '@/utils/formatCurrency'
 import { truncateNumberToFixedDecimals } from '@/utils/truncateNumberToFixedDecimals'
@@ -29,16 +30,7 @@ export function TopCryptosSection() {
     setNumberOfTableRows((prev) => (prev === 4 ? Infinity : 4))
   }
 
-  const fakeCryptos = [
-    {
-      asset_id: 'aaaaa',
-      name: 'coin',
-      icon_url:
-        'https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_16/f231d7382689406f9a50dde841418c64.png',
-      price_change: 0.00252,
-      price_usd: 2,
-    },
-  ]
+  const { cryptos } = useApiCryptoContext()
 
   return (
     <>
@@ -62,11 +54,11 @@ export function TopCryptosSection() {
             <TableHead className="text-left">Crypto</TableHead>
             <TableHead className="text-left">Price</TableHead>
             <TableHead>Change</TableHead>
-            <TableHead className="text-right pr-6">Trade</TableHead>
+            <TableHead className="text-center pr-6">Trade</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {fakeCryptos?.slice(0, numberOfTableRows).map((crypto, index) => (
+          {cryptos?.slice(0, numberOfTableRows).map((crypto, index) => (
             <TableRow
               className={'even:bg-secondary-100 odd:bg-white'}
               key={crypto?.asset_id?.concat('x')}
@@ -82,10 +74,12 @@ export function TopCryptosSection() {
               </TableCell>
               <TableCell
                 className={cn(
-                  crypto?.price_change > 0
-                    ? 'text-terniary-700'
-                    : 'text-quaternary-700',
-                  'text-base text-foreground',
+                  truncateNumberToFixedDecimals(crypto?.price_change) > 0 &&
+                  'text-terniary-700',
+                  truncateNumberToFixedDecimals(crypto?.price_change) < 0 &&
+                  'text-quaternary-700',
+                  truncateNumberToFixedDecimals(crypto?.price_change) === 0 &&
+                  'text-foreground',
                 )}
               >
                 {Number(
@@ -124,7 +118,7 @@ export function TopCryptosSection() {
             <TableHead>Trade</TableHead>
           </TableRow>
         </TableHeader>
-        {fakeCryptos.slice(0, numberOfTableRows).map((crypto, index) => (
+        {cryptos.slice(0, numberOfTableRows).map((crypto, index) => (
           <TableBody key={crypto.asset_id.concat('y')}>
             <TableRow
               className={cn(
@@ -174,11 +168,30 @@ export function TopCryptosSection() {
                             </TableCell>
                           </TableRow>
                           <TableRow>
-                            <TableCell className="text-right text-sm pt-2">
+                            <TableCell
+                              className={cn(
+                                truncateNumberToFixedDecimals(
+                                  crypto?.price_change,
+                                ) > 0 && 'text-terniary-700',
+                                truncateNumberToFixedDecimals(
+                                  crypto?.price_change,
+                                ) < 0 && 'text-quaternary-700',
+                                truncateNumberToFixedDecimals(
+                                  crypto?.price_change,
+                                ) === 0 && 'text-foreground',
+                                'text-right text-sm pt-2',
+                              )}
+                            >
                               {truncateNumberToFixedDecimals(
-                                crypto.price_change,
+                                crypto?.price_change,
+                              ) > 0
+                                ? '+'
+                                : ''}
+                              {truncateNumberToFixedDecimals(
+                                crypto?.price_change,
                                 2,
                               )}
+                              %
                             </TableCell>
                           </TableRow>
                         </TableBody>

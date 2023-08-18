@@ -1,15 +1,7 @@
 'use client'
 
+import { CryptoType } from '@/types/crypto'
 import React, { createContext, useContext, useEffect, useState } from 'react'
-
-interface CryptoType {
-  asset_id: string
-  name: string
-  type_is_crypto: number
-  icon_url?: string
-  price_usd: number
-  price_change?: number
-}
 
 interface ApiCryptoContextType {
   cryptos: CryptoType[]
@@ -23,7 +15,9 @@ const ApiCryptoContext = createContext<ApiCryptoContextType | undefined>(
 export function useApiCryptoContext() {
   const context = useContext(ApiCryptoContext)
   if (!context) {
-    throw new Error('useApiCryptoContext must be used within a CryptoProvider')
+    throw new Error(
+      'useApiCryptoContext must be used within an ApiCryptoProvider',
+    )
   }
   return context
 }
@@ -32,11 +26,13 @@ export function ApiCryptoProvider({ children }: { children: React.ReactNode }) {
   const [cryptos, setCryptos] = useState<CryptoType[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(true)
 
+  const topCryptos = 'BTC;ETH;ADA;XRP;XLM;DOGE;DOT;LTC;LINK;BCH'
+
   useEffect(() => {
     async function fetchCryptoTypes() {
       try {
         const response = await fetch(
-          'https://rest.coinapi.io/v1/assets?filter_asset_id=BTC;ETH;ADA;XRP;XLM&limit=5',
+          `https://rest.coinapi.io/v1/assets?filter_asset_id=${topCryptos}&limit=10`,
           {
             headers: {
               'X-CoinAPI-Key': process.env.NEXT_PUBLIC_COIN_API_KEY || '',
@@ -51,7 +47,7 @@ export function ApiCryptoProvider({ children }: { children: React.ReactNode }) {
         const data: CryptoType[] = await response.json()
 
         const iconsResponse = await fetch(
-          'https://rest.coinapi.io/v1/assets/icons/16',
+          'https://rest.coinapi.io/v1/assets/icons/32',
           {
             headers: {
               'X-CoinAPI-Key': process.env.NEXT_PUBLIC_COIN_API_KEY || '',
@@ -71,7 +67,9 @@ export function ApiCryptoProvider({ children }: { children: React.ReactNode }) {
           iconMap[icon.asset_id] = icon.url
         }
 
-        const fetchExchangeRates = data.map(async (crypto) => {
+        const updatedData: CryptoType[] = []
+
+        for (const crypto of data) {
           const exchangeRateResponse = await fetch(
             `https://rest.coinapi.io/v1/exchangerate/${crypto.asset_id}/USD`,
             {
@@ -82,7 +80,8 @@ export function ApiCryptoProvider({ children }: { children: React.ReactNode }) {
           )
 
           if (!exchangeRateResponse.ok) {
-            throw new Error('Failed to fetch exchange rate')
+            console.error('Failed to fetch exchange rate')
+            continue
           }
 
           const exchangeRateData: { rate: number } =
@@ -92,14 +91,12 @@ export function ApiCryptoProvider({ children }: { children: React.ReactNode }) {
             ((exchangeRateData.rate - crypto.price_usd) / crypto.price_usd) *
             100
 
-          return {
+          updatedData.push({
             ...crypto,
             icon_url: iconMap[crypto.asset_id],
             price_change: changePercentage,
-          }
-        })
-
-        const updatedData = await Promise.all(fetchExchangeRates)
+          })
+        }
 
         setCryptos(updatedData)
         setIsLoading(false)
@@ -109,7 +106,7 @@ export function ApiCryptoProvider({ children }: { children: React.ReactNode }) {
       }
     }
 
-    fetchCryptoTypes()
+    // fetchCryptoTypes()
   }, [])
 
   return (

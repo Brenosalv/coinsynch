@@ -1,6 +1,7 @@
 import { HomeFooter } from '@/components/layouts/HomeFooter'
 import { HomeHeader } from '@/components/layouts/HomeHeader'
 import { Toaster } from '@/components/ui/toaster'
+import { ApiCryptoProvider } from '@/contexts/ApiCryptoContext'
 import type { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
 import '../globals.css'
@@ -20,10 +21,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={roboto.className}>
-        <HomeHeader />
-        {children}
-        <HomeFooter />
-        <Toaster />
+        <ApiCryptoProvider>
+          <HomeHeader />
+          {children}
+          <HomeFooter />
+          <Toaster />
+        </ApiCryptoProvider>
       </body>
     </html>
   )
