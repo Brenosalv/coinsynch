@@ -64,7 +64,7 @@ export default function Home() {
         <Image src={WavesHomepageBackgroundImage} alt="" className="w-full" />
       </div>
 
-      <div className="w-full min-[1060px]:ml-[112px] flex flex-wrap-reverse gap-8 items-center justify-center bg-gradient-to-b from-transparent via-transparent to-gray-100 mb-[120px] max-md:my-[80px] max-sm:my-[56px]">
+      <div className="w-full min-[1060px]:pl-[112px] flex flex-wrap-reverse gap-8 items-center justify-center bg-gradient-to-b from-transparent via-transparent to-gray-100 mb-[120px] max-md:my-[80px] max-sm:my-[56px]">
         <div className="flex min-[768px]:flex-col max-md:gap-4 gap-8 max-md:overflow-x-auto max-md:pl-6 max-md:scroll-smooth max-md:will-change-scroll max-md:scrollbar-hide max-md:pb-[56px] pb-[130px]">
           <div className="flex max-md:gap-4 gap-8">
             <SolutionsCard iconSrc={BitcoinIcon} />
