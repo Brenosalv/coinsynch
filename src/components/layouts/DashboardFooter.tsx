@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 export function DashboardFooter() {
   return (
-    <footer className="flex justify-between max-md:px-12 py-6 max-md:py-6">
+    <footer className="flex justify-between max-md:px-8 py-6 max-md:py-6">
       <p className="text-sm max-md:mx-auto md:mx-auto max-sm:text-xs">
         CopyriCopyright © 2023 - All rights reserved
       </p>

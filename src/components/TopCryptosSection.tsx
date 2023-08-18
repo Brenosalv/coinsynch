@@ -18,8 +18,8 @@ import {
 import { useApiCryptoContext } from '@/contexts/ApiCryptoContext'
 import { cn } from '@/lib/utils'
 import { formatCurrency } from '@/utils/formatCurrency'
+import { getFormattedPriceChange } from '@/utils/getFormattedPriceChange'
 import { getPriceChangeStyles } from '@/utils/priceChangeStyles'
-import { truncateNumberToFixedDecimals } from '@/utils/truncateNumberToFixedDecimals'
 import { useState } from 'react'
 import { CryptoProfile } from './CryptoProfile'
 import { Button } from './ui/button'
@@ -74,12 +74,7 @@ export function TopCryptosSection() {
                 {formatCurrency(crypto?.price_usd)}
               </TableCell>
               <TableCell className={getPriceChangeStyles(crypto?.price_change)}>
-                {Number(
-                  truncateNumberToFixedDecimals(crypto?.price_change, 2),
-                ) > 0
-                  ? '+'
-                  : ''}
-                {truncateNumberToFixedDecimals(crypto?.price_change, 2)}%
+                {getFormattedPriceChange(crypto?.price_change ?? 0)}
               </TableCell>
               <TableCell className="flex justify-end pr-6">
                 <Button className="py-2 px-10 bg-terniary-700 h-8">Buy</Button>
@@ -162,28 +157,13 @@ export function TopCryptosSection() {
                           <TableRow>
                             <TableCell
                               className={cn(
-                                truncateNumberToFixedDecimals(
-                                  crypto?.price_change,
-                                ) > 0 && 'text-terniary-700',
-                                truncateNumberToFixedDecimals(
-                                  crypto?.price_change,
-                                ) < 0 && 'text-quaternary-700',
-                                truncateNumberToFixedDecimals(
-                                  crypto?.price_change,
-                                ) === 0 && 'text-foreground',
+                                getPriceChangeStyles(crypto?.price_change ?? 0),
                                 'text-right text-sm pt-2',
                               )}
                             >
-                              {truncateNumberToFixedDecimals(
-                                crypto?.price_change,
-                              ) > 0
-                                ? '+'
-                                : ''}
-                              {truncateNumberToFixedDecimals(
-                                crypto?.price_change,
-                                2,
+                              {getFormattedPriceChange(
+                                crypto?.price_change ?? 0,
                               )}
-                              %
                             </TableCell>
                           </TableRow>
                         </TableBody>

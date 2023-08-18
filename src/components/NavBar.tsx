@@ -1,8 +1,12 @@
 'use client'
 
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
+import { useApiCryptoContext } from '@/contexts/ApiCryptoContext'
+import { formatCurrency } from '@/utils/formatCurrency'
+import { getFormattedPriceChange } from '@/utils/getFormattedPriceChange'
 import Image from 'next/image'
 import { useRef } from 'react'
+import Marquee from 'react-fast-marquee'
 import LogoImg from '../assets/logo.svg'
 import MenuIcon from '../assets/menu.svg'
 import { SignInForm } from './forms/SignInForm'
@@ -21,6 +25,8 @@ import { Link } from './ui/link'
 export function NavBar() {
   const signInButtonRef = useRef<HTMLButtonElement>(null)
   const signUpButtonRef = useRef<HTMLButtonElement>(null)
+
+  const { cryptos } = useApiCryptoContext()
 
   function handleSignInButtonClick() {
     if (signInButtonRef.current) {
@@ -47,15 +53,34 @@ export function NavBar() {
         </Link>
 
         <div className="flex gap-[24px] ml-[40px] mr-auto max-sm:hidden">
-          <Link href="#">About us</Link>
-          <Link href="#">Top Cryptos</Link>
+          <Link href="#" className="whitespace-nowrap">
+            About us
+          </Link>
+          <Link href="#" className="whitespace-nowrap">
+            Top Cryptos
+          </Link>
         </div>
 
-        <div className="flex items-center gap-[80px]">
-          <div className="pl-[16px] flex gap-[8px] max-[1024px]:hidden">
-            <span className="text-sm text-secondary">BIT</span>
-            <span className="text-sm text-foreground">R$23,62</span>
-            <span className="text-sm text-constructive">+7,082</span>
+        <div className="flex items-center gap-20">
+          <div className="overflow-hidden max-w-[360px] max-xl:hidden">
+            <Marquee loop={0} speed={25} className="max-w-[360px] ml-8">
+              {cryptos.map((crypto) => (
+                <div
+                  key={crypto.asset_id}
+                  className="inline-block whitespace-nowrap mr-6 space-x-2"
+                >
+                  <span className="text-sm text-secondary">
+                    {crypto.asset_id}
+                  </span>
+                  <span className="text-sm text-foreground">
+                    {formatCurrency(crypto.price_usd)}
+                  </span>
+                  <span className="text-sm text-constructive">
+                    {getFormattedPriceChange(crypto.price_change)}
+                  </span>
+                </div>
+              ))}
+            </Marquee>
           </div>
 
           <div className="flex gap-[24px] max-sm:hidden">
@@ -177,10 +202,23 @@ export function NavBar() {
         </div>
       </div>
 
-      <div className="pl-[8px] py-[5px] flex gap-[8px] items-center justify-center w-full shadow-lg border-t border-secondary-200 min-[1024px]:hidden">
-        <span className="text-sm text-secondary">BIT</span>
-        <span className="text-sm text-foreground">R$23,62</span>
-        <span className="text-sm text-constructive">+7,082</span>
+      <div className="py-[5px] flex items-center justify-center shadow-lg border-t border-secondary-200 xl:hidden">
+        <Marquee loop={0} speed={25} className="max-w-[360px]">
+          {cryptos.map((crypto) => (
+            <div
+              key={crypto.asset_id}
+              className="inline-block whitespace-nowrap mr-7 space-x-2"
+            >
+              <span className="text-sm text-secondary">{crypto.asset_id}</span>
+              <span className="text-sm text-foreground">
+                {formatCurrency(crypto.price_usd)}
+              </span>
+              <span className="text-sm text-constructive">
+                {getFormattedPriceChange(crypto.price_change)}
+              </span>
+            </div>
+          ))}
+        </Marquee>
       </div>
     </nav>
   )

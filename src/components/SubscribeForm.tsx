@@ -40,9 +40,6 @@ export function SubscribeForm() {
         'http://localhost:5000/subscriptions',
         requestOptions,
       )
-      const data = await response.json()
-
-      console.log('Subscription successful:', data)
 
       // Clear the form and loading state
       form.reset()

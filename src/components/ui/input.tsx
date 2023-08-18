@@ -32,7 +32,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       disabled,
       label,
     },
-    ref,
   ) => {
     const form = useFormContext()
 

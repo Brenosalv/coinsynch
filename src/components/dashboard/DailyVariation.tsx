@@ -1,8 +1,18 @@
+'use client'
+
 import EtheriumLogoIcon from '@/assets/etherium-logo.svg'
 import GraphicImage from '@/assets/graphic-image.svg'
+import { useApiCryptoContext } from '@/contexts/ApiCryptoContext'
+import { cn } from '@/lib/utils'
+import { getFormattedPriceChange } from '@/utils/getFormattedPriceChange'
+import { getPriceChangeStyles } from '@/utils/priceChangeStyles'
 import Image from 'next/image'
 
 export function DailyVariation() {
+  const { cryptos } = useApiCryptoContext()
+
+  const etheriumCrypto = cryptos.find((crypto) => crypto.asset_id === 'ETH')
+
   return (
     <div className="flex flex-wrap shadow-lg rounded-lg w-1/2 max-sm:min-h-36 bg-white sm:h-28">
       <div className="flex flex-col w-1/3 max-sm:w-full p-2 max-sm:h-fit">
@@ -14,7 +24,14 @@ export function DailyVariation() {
             <Image src={EtheriumLogoIcon} alt="" className="max-sm:w-4" />
             <span className="max-sm:text-xs">ETH</span>
           </div>
-          <p className="text-terniary-700 max-sm:mt-2 max-sm:mb-2">+5,65%</p>
+          <p
+            className={cn(
+              getPriceChangeStyles(etheriumCrypto?.price_change ?? 0),
+              'max-sm:mt-2 max-sm:mb-2',
+            )}
+          >
+            {getFormattedPriceChange(etheriumCrypto?.price_change ?? 0)}
+          </p>
         </div>
       </div>
 
