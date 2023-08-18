@@ -13,5 +13,52 @@
       "id": 1
     }
   ],
-  "wallet": []
+  "wallet": [
+    {
+      "asset_id": "LTC",
+      "name": "Litecoin",
+      "type_is_crypto": 1,
+      "data_quote_start": "2014-04-21T00:00:00.0000000Z",
+      "data_quote_end": "2023-08-17T00:00:00.0000000Z",
+      "data_orderbook_start": "2014-04-20T15:06:34.0000000Z",
+      "data_orderbook_end": "2023-07-07T00:00:00.0000000Z",
+      "data_trade_start": "2013-05-19T00:00:00.0000000Z",
+      "data_trade_end": "2023-08-17T00:00:00.0000000Z",
+      "data_symbols_count": 5097,
+      "volume_1hrs_usd": 555923406.1,
+      "volume_1day_usd": 44668360427.1,
+      "volume_1mth_usd": 41033437168163.71,
+      "price_usd": 64.33990380746164,
+      "id_icon": "a201762f-1499-41ef-9b84-e0742cd00e48",
+      "data_start": "2013-05-19",
+      "data_end": "2023-08-17",
+      "icon_url": "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_32/a201762f149941ef9b84e0742cd00e48.png",
+      "price_change": -0.1086031402928906,
+      "quantity": 1410,
+      "id": 1
+    },
+    {
+      "asset_id": "BTC",
+      "name": "Bitcoin",
+      "type_is_crypto": 1,
+      "data_quote_start": "2014-02-24T00:00:00.0000000Z",
+      "data_quote_end": "2023-08-17T00:00:00.0000000Z",
+      "data_orderbook_start": "2014-02-24T17:43:05.0000000Z",
+      "data_orderbook_end": "2023-07-07T00:00:00.0000000Z",
+      "data_trade_start": "2010-07-17T00:00:00.0000000Z",
+      "data_trade_end": "2023-08-17T00:00:00.0000000Z",
+      "data_symbols_count": 160191,
+      "volume_1hrs_usd": 22214639648270.54,
+      "volume_1day_usd": 1310108632034687.5,
+      "volume_1mth_usd": 86795869981143600,
+      "price_usd": 26503.468434814138,
+      "id_icon": "4caf2b16-a017-4e26-a348-2cea69c34cba",
+      "data_start": "2010-07-17",
+      "data_end": "2023-08-17",
+      "icon_url": "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_32/4caf2b16a0174e26a3482cea69c34cba.png",
+      "price_change": -0.0025349688487082316,
+      "quantity": 50,
+      "id": 2
+    }
+  ]
 }

@@ -1,7 +1,19 @@
+'use client'
+
 import BalanceIcon from '@/assets/balance.svg'
+import { useWalletContext } from '@/contexts/WalletContext'
+import { formatCurrency } from '@/utils/formatCurrency'
 import Image from 'next/image'
 
 export function Balance() {
+  const { walletCryptos } = useWalletContext()
+
+  const balance = walletCryptos
+    .map((crypto) => crypto.quantity * crypto.price_usd)
+    .reduce(function (accumulator, currentValue) {
+      return accumulator + currentValue
+    }, 0)
+
   return (
     <div className="flex shadow-lg rounded-lg h-28 max-sm:h-12 flex-1">
       <div className="px-6 max-sm:px-4 max-sm:py-2 pr-12 max-sm:pr-12 flex items-center gap-4 bg-white rounded-s-lg flex-1">
@@ -18,7 +30,7 @@ export function Balance() {
         </div>
       </div>
       <div className="px-14 max-sm:px-6 py-9 max-sm:py-3 bg-primary-100 rounded-e-lg text-center flex items-center justify-center font-bold text-3xl max-sm:text-base flex-1">
-        <h3>$32,256.56</h3>
+        <h3>{formatCurrency(balance)}</h3>
       </div>
     </div>
   )
