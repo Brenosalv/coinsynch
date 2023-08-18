@@ -1,4 +1,5 @@
 export interface CryptoType {
+  id?: number
   asset_id: string
   name: string
   icon_url?: string

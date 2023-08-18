@@ -41,6 +41,7 @@ module.exports = {
           100: 'hsl(var(--secondary-100))',
           200: 'hsl(var(--secondary-200))',
           300: 'hsl(var(--secondary-300))',
+          400: 'hsl(var(--secondary-400))',
           500: 'hsl(var(--secondary-500))',
         },
         terniary: {

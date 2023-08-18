@@ -12,7 +12,7 @@ export function CryptoProfile({
   iconSize = 16,
 }: CryptoProfileProps) {
   return (
-    <div className="flex items-center gap-2 w-fit mr-auto">
+    <div className="flex items-center gap-2 w-fit">
       <Image src={iconUrl ?? ''} alt="" width={iconSize} height={iconSize} />
       <p className="text-sm max-sm:text-xs text-foreground leading-4">
         {name}{' '}

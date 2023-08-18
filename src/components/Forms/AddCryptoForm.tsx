@@ -39,14 +39,14 @@ export function AddCryptoForm() {
       const response = await fetch('http://localhost:5000/wallet')
       const walletCryptos: CryptoType[] = await response.json()
 
-      const selectedCryptoFromWalletToUpdate = walletCryptos.find(
+      const cryptoFromWalletToUpdate = walletCryptos.find(
         (crypto) => crypto.asset_id === data.asset_id,
       )
 
       const updatedCrypto = {
-        ...selectedCryptoFromWalletToUpdate,
+        ...cryptoFromWalletToUpdate,
         quantity:
-          Number(selectedCryptoFromWalletToUpdate?.quantity ?? 0) +
+          Number(cryptoFromWalletToUpdate?.quantity ?? 0) +
           Number(data.quantity),
         price_change: selectedCrypto?.price_change,
       }
@@ -134,7 +134,7 @@ export function AddCryptoForm() {
           className="pl-4 placeholder:text-gray-400 text-gray-400"
         />
         <Button type="submit" className="w-full py-[0.875rem] px-[1.5rem] h-10">
-          Add crypto
+          Add Crypto
         </Button>
       </form>
     </Form>

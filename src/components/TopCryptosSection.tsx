@@ -18,6 +18,7 @@ import {
 import { useApiCryptoContext } from '@/contexts/ApiCryptoContext'
 import { cn } from '@/lib/utils'
 import { formatCurrency } from '@/utils/formatCurrency'
+import { getPriceChangeStyles } from '@/utils/priceChangeStyles'
 import { truncateNumberToFixedDecimals } from '@/utils/truncateNumberToFixedDecimals'
 import { useState } from 'react'
 import { CryptoProfile } from './CryptoProfile'
@@ -72,16 +73,7 @@ export function TopCryptosSection() {
               <TableCell className="text-left">
                 {formatCurrency(crypto?.price_usd)}
               </TableCell>
-              <TableCell
-                className={cn(
-                  truncateNumberToFixedDecimals(crypto?.price_change) > 0 &&
-                  'text-terniary-700',
-                  truncateNumberToFixedDecimals(crypto?.price_change) < 0 &&
-                  'text-quaternary-700',
-                  truncateNumberToFixedDecimals(crypto?.price_change) === 0 &&
-                  'text-foreground',
-                )}
-              >
+              <TableCell className={getPriceChangeStyles(crypto?.price_change)}>
                 {Number(
                   truncateNumberToFixedDecimals(crypto?.price_change, 2),
                 ) > 0

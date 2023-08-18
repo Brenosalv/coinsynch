@@ -28,13 +28,15 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import { useWalletContext } from '@/contexts/WalletContext'
-import { cn } from '@/lib/utils'
 import { formatCurrency } from '@/utils/formatCurrency'
+import { getPriceChangeStyles } from '@/utils/priceChangeStyles'
 import { truncateNumberToFixedDecimals } from '@/utils/truncateNumberToFixedDecimals'
+import { DialogDescription } from '@radix-ui/react-dialog'
 import Image from 'next/image'
 import { useState } from 'react'
 import { CryptoProfile } from '../CryptoProfile'
 import { AddCryptoForm } from '../forms/AddCryptoForm'
+import { TransferCryptoForm } from '../forms/TransferCryptoForm'
 import { Button } from '../ui/button'
 
 export function MyWallet() {
@@ -110,14 +112,7 @@ export function MyWallet() {
                     </p>
                   </TableCell>
                   <TableCell
-                    className={cn(
-                      truncateNumberToFixedDecimals(crypto?.price_change) > 0 &&
-                      'text-terniary-700',
-                      truncateNumberToFixedDecimals(crypto?.price_change) < 0 &&
-                      'text-quaternary-700',
-                      truncateNumberToFixedDecimals(crypto?.price_change) ===
-                      0 && 'text-foreground',
-                    )}
+                    className={getPriceChangeStyles(crypto?.price_change)}
                   >
                     {truncateNumberToFixedDecimals(crypto?.price_change) > 0
                       ? '+'
@@ -125,9 +120,31 @@ export function MyWallet() {
                     {truncateNumberToFixedDecimals(crypto?.price_change, 2)}%
                   </TableCell>
                   <TableCell className="text-right pr-6">
-                    <Button variant="ghost" className="px-10 p-0">
-                      <Image src={TransferIcon} alt="" />
-                    </Button>
+                    <Dialog>
+                      <DialogTrigger>
+                        <Button variant="ghost" className="px-10 p-0">
+                          <Image src={TransferIcon} alt="" />
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent className="flex flex-col gap-6 p-8 max-sm:p-4">
+                        <DialogHeader className="flex flex-col gap-6 max-sm:gap-4">
+                          <DialogTitle className="text-2xl font-bold mx-auto max-md:text-xl max-sm:text-base">
+                            Transfer Crypto
+                          </DialogTitle>
+
+                          <Separator />
+
+                          <DialogDescription className="flex items-center justify-center gap-6 mb-6 text-center">
+                            <span className="text-sm text-secondary-400 max-sm:text-xs">
+                              You are transfering
+                            </span>
+                            <CryptoProfile {...crypto} iconSize={24} />
+                          </DialogDescription>
+                        </DialogHeader>
+
+                        <TransferCryptoForm cryptoId={crypto.asset_id} />
+                      </DialogContent>
+                    </Dialog>
                   </TableCell>
                 </TableRow>
               ))}
@@ -158,14 +175,7 @@ export function MyWallet() {
                   <div className="flex flex-col text-left">
                     <span className="text-sm text-secondary-500">Change</span>
                     <span
-                      className={cn(
-                        truncateNumberToFixedDecimals(crypto?.price_change) >
-                        0 && 'text-terniary-700',
-                        truncateNumberToFixedDecimals(crypto?.price_change) <
-                        0 && 'text-quaternary-700',
-                        truncateNumberToFixedDecimals(crypto?.price_change) ===
-                        0 && 'text-foreground',
-                      )}
+                      className={getPriceChangeStyles(crypto?.price_change)}
                     >
                       {truncateNumberToFixedDecimals(crypto?.price_change) > 0
                         ? '+'

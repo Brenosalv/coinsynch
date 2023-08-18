@@ -5,17 +5,33 @@ import * as React from 'react'
 import { cn } from '@/lib/utils'
 import { ChevronDown, ChevronUp, EyeIcon, EyeOffIcon } from 'lucide-react'
 import { useFormContext } from 'react-hook-form'
-import { FormControl, FormField, FormItem, FormMessage } from './form'
+import {
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from './form'
 
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   iconLeft?: React.ReactNode
   iconRight?: React.ReactNode
+  label?: string
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
-    { name, iconLeft, iconRight, type, className, placeholder, disabled },
+    {
+      name,
+      iconLeft,
+      iconRight,
+      type,
+      className,
+      placeholder,
+      disabled,
+      label,
+    },
     ref,
   ) => {
     const form = useFormContext()
@@ -61,6 +77,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         name={name ?? ''}
         render={({ field }) => (
           <FormItem>
+            {label && <FormLabel className="font-normal">{label}</FormLabel>}
             <FormControl>
               <div className="relative">
                 {iconLeft && (
