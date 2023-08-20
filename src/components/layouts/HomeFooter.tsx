@@ -1,7 +1,7 @@
 import LogoImg from '@/assets/logo.svg'
 import WavesFooterIcon from '@/assets/waves-footer.svg'
-import { SubscribeForm } from '@/components/forms/SubscribeForm'
 import Image from 'next/image'
+import { SubscribeForm } from '../forms/SubscribeForm'
 
 export function HomeFooter() {
   return (
@@ -30,7 +30,7 @@ export function HomeFooter() {
 
       <div className="flex justify-between mx-[112px] max-md:mx-12 py-6 max-md:py-6">
         <p className="text-sm max-sm:hidden">
-          CopyriCopyright © 2023 - All rights reserved
+          Copyright © 2023 - All rights reserved
         </p>
 
         <Image

@@ -5,7 +5,7 @@ export function DashboardFooter() {
   return (
     <footer className="flex justify-between max-md:px-8 py-6 max-md:py-6 shadow-lg">
       <p className="text-sm max-md:mx-auto md:mx-auto max-sm:text-xs">
-        CopyriCopyright © 2023 - All rights reserved
+        Copyright © 2023 - All rights reserved
       </p>
 
       <Image
