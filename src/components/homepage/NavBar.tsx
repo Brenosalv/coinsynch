@@ -1,5 +1,7 @@
 'use client'
 
+import { SignInForm } from '@/components/forms/SignInForm'
+import { SignUpForm } from '@/components/forms/SignUpForm'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { useApiCryptoContext } from '@/contexts/ApiCryptoContext'
 import { formatCurrency } from '@/utils/formatCurrency'
@@ -9,8 +11,6 @@ import { useRef } from 'react'
 import Marquee from 'react-fast-marquee'
 import LogoImg from '../../assets/logo.svg'
 import MenuIcon from '../../assets/menu.svg'
-import { SignInForm } from '../forms/SignInForm'
-import { SignUpForm } from '../forms/SignUpForm'
 import { Button } from '../ui/button'
 import {
   Dialog,

@@ -4,6 +4,8 @@ import EmptyIcon from '@/assets/empty.svg'
 import PlusIcon from '@/assets/plus.svg'
 import TransferIcon from '@/assets/transfer.svg'
 import WalletIcon from '@/assets/wallet.svg'
+import { AddCryptoForm } from '@/components/forms/AddCryptoForm'
+import { TransferCryptoForm } from '@/components/forms/TransferCryptoForm'
 import {
   Card,
   CardContent,
@@ -34,8 +36,6 @@ import { getPriceChangeStyles } from '@/utils/priceChangeStyles'
 import { DialogDescription } from '@radix-ui/react-dialog'
 import Image from 'next/image'
 import { useState } from 'react'
-import { AddCryptoForm } from '../forms/AddCryptoForm'
-import { TransferCryptoForm } from '../forms/TransferCryptoForm'
 import { Button } from '../ui/button'
 import { CryptoProfile } from './CryptoProfile'
 
